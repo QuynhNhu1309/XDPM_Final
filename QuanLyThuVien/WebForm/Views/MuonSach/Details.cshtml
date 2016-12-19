@@ -1,0 +1,84 @@
+﻿
+@model IList<Models.phieu_muon_chi_tiet>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_Library.cshtml";
+   
+}
+
+<div id="body">
+    <div class="header">
+        <div>
+            <h1>CHI TIẾT PHIẾU MƯỢN</h1>
+        </div>
+    </div>
+    <div class="blog">
+
+        <div class="row">
+            <div class="col-md-11">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>MÃ PHIẾU MƯỢN</th>
+                            <th>MÃ PHIẾU MƯỢN CHI TIẾT</th>
+                            <th>MÃ CUỐN SÁCH </th>
+                            <th>SỐ LƯỢNG</th>
+                            <th>TÌNH TRẠNG</th>
+                            
+                        </tr>
+                    </thead>
+                 
+
+
+                    <tbody>
+                        @{
+
+                            var count = 0;
+
+                            foreach (var item in Model)
+                            {
+
+                                count = count + 1;
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@Html.DisplayFor(modelItem => item.phieu_muon.ma_phieu_muon)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.ma_phieu_muon_chi_tiet)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.cuon_sach.ma_cuon_sach)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.so_luong)</td>
+                                    
+                                    <td>@Html.DisplayFor(modelItem => item.trang_thai.ten_trang_thai)</td>
+                                    
+
+                            </tr>
+                            }
+
+                        }
+
+
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-1"></div>
+           
+        </div>
+    </div>
+    <!--       row    -->
+
+
+
+</div>
+<div class="footer">
+
+
+
+</div>
+</div>
+
+
+

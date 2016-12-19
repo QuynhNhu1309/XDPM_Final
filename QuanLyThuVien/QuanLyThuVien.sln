@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{8CF06317-9564-4705-B1B5-1E1D8ACA37AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForm", "WinForm\WinForm.csproj", "{2A2EE69F-1BCF-47A9-AA46-962B8CA951A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebForm", "WebForm\WebForm.csproj", "{2741FA08-3D76-40A1-B756-9E135B753FB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8CF06317-9564-4705-B1B5-1E1D8ACA37AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CF06317-9564-4705-B1B5-1E1D8ACA37AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CF06317-9564-4705-B1B5-1E1D8ACA37AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CF06317-9564-4705-B1B5-1E1D8ACA37AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A2EE69F-1BCF-47A9-AA46-962B8CA951A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A2EE69F-1BCF-47A9-AA46-962B8CA951A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A2EE69F-1BCF-47A9-AA46-962B8CA951A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A2EE69F-1BCF-47A9-AA46-962B8CA951A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2741FA08-3D76-40A1-B756-9E135B753FB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2741FA08-3D76-40A1-B756-9E135B753FB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2741FA08-3D76-40A1-B756-9E135B753FB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2741FA08-3D76-40A1-B756-9E135B753FB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

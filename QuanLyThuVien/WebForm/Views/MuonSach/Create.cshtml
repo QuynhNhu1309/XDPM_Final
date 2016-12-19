@@ -1,0 +1,195 @@
+﻿@model IEnumerable<object>
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout_Library.cshtml";
+    List<Models.doc_gia> lst_docgia = Model.ToList()[0] as List<Models.doc_gia>;
+    List<Models.dau_sach> lst_dausach = Model.ToList()[1] as List<Models.dau_sach>;
+   // List<Models.phieu_muon_chi_tiet> lst_pmct = Model.ToList()[2] as List<Models.phieu_muon_chi_tiet>;
+}
+
+<div id="body">
+    <div class="header">
+        <div>
+            <h1>MƯỢN SÁCH</h1>
+        </div>
+    </div>
+    <div class="blog">
+        <div class="featured">
+            <div class="row" id="row_tim_doc_gia">
+                <form>
+                    <div class="col-md-7" style=" padding-left: 0px;">
+
+                        <div class="form-group">
+                            <label for="tim_doc_gia">TÌM ĐỘC GIẢ</label>
+                            <input type="text" class="form-control" id="tim_doc_gia" name="tim_doc_gia" value="@ViewBag.tim_doc_gia">
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-5" style="margin-top:24px">
+                        <button type="submit" class="btn btn-primary">TÌM</button>
+                    </div>
+                </form>
+            </div>
+            <div class="row" id="row_form_muon">
+                <div class="col-md-11">
+
+                    
+               
+                 
+                       
+                        <fieldset>
+                            <legend>PHIẾU MƯỢN</legend>
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+
+                                        <label for="dau_sach">Chọn đầu sách</label>
+                                        <select class="form-control input-sm" id="id_dau_sach" name="id_dau_sach">
+                                            @foreach (var item in lst_dausach)
+                                            {
+                                                <option value="@item.id" 
+                                           
+                                            
+                                            >@Html.DisplayFor(modelItem => item.ten_dau_sach)</option>
+                                            }
+
+                                            </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-1">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="so_luong">Số lượng </label>
+                                        <input type="NUMBER" min="1" max="10" step="1" value="1" size="6" id="so_luong" class="form-control input-sm" name="so_luong">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row"><button onclick="createTable_MuonSach()" class="btn btn-primary">CHO MƯỢN</button></div>
+
+
+
+
+                            
+                        </fieldset>
+                    
+                   
+                </div>
+
+                @using(Html.BeginForm("Create", "MuonSach", FormMethod.Post))
+                    {
+                    @Html.AntiForgeryToken()
+
+                <div class="row">  
+                    <div class="col-md-11">
+                        <table class="table table-striped" id="table_create_phieu_muon">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã phiếu mượn</th>
+                                    <th>Mã độc giả</th>
+                                    <th>Mã cuốn sách</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                 </div>
+
+                <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="ngay_muon">Ngày mượn: </label>
+                                <input type="date" id="ngay_muon" class="form-control input-sm" name="ngay_muon">
+                            </div>
+                        </div>
+
+                        <div class="col-md-1">
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="ngay_tra">Ngày trả: </label>
+                                <input type="date" id="ngay_tra" class="form-control input-sm" name="ngay_tra">
+                            </div>
+                        </div>
+                 </div>
+                 <!-- row -->
+                    
+                 <div class="row">
+
+                        <input type="text" name="id_doc_gia" value="@if (lst_docgia.Count() == 1)
+                                                          {
+                                                             foreach (var item in lst_docgia)                                                       { @Html.DisplayFor(modelItem => item.id)}
+                                                          }" />
+
+                        <input type="text" name="ma_doc_gia" value="@if(lst_docgia.Count() == 1)
+                                                          {
+                                                             @ViewBag.tim_doc_gia
+                                                          }" />
+
+
+                </div>
+                    
+                <div class="row"><button type="submit" class="btn btn-primary">LƯU</button></div>
+
+
+                    }
+
+
+
+
+            </div>
+        </div>
+        @if (Request.HttpMethod == "GET")
+        {
+            if (lst_docgia.Count() == 1 || lst_docgia.Count() == 0)
+            {
+                foreach (var item in lst_docgia)
+                {
+                    <div class="sidebar">
+                        @ViewBag.idpm
+                        @ViewBag.iddg
+                        @ViewBag.ngay_muon
+                        @ViewBag.tim_doc_gia
+                        <h2>THÔNG TIN ĐỘC GIẢ</h2>
+                        <br />
+                        <img src="~/Images/avatar.jpg" alt="">
+
+                        <h3>@Html.DisplayFor(modelItem => item.ho_ten)</h3>
+                        <div class="row">
+                            <div class="col-md-1">
+
+                            </div>
+                            <div class="col-md-11">
+                                <p>Địa chỉ: @Html.DisplayFor(modelItem => item.dia_chi)</p>
+                                <p>Mã thẻ thư viện: @Html.DisplayFor(modelItem => item.ma_the_thu_vien)</p>
+                                <p>Điện thoại: @Html.DisplayFor(modelItem => item.dien_thoai)</p>
+                                <p>Ngày cấp thẻ: @Html.DisplayFor(modelItem => item.ngay_cap_the)</p>
+                                <p>Ngày hết hạn: @Html.DisplayFor(modelItem => item.ngay_het_han)</p>
+                                <a href="singlepost.html" class="more">Xem thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+            if (lst_docgia.Count() == 0)
+            {
+                Response.Write("<script>alert('Không tìm thấy mã thẻ thư viện này');</script>");
+            }
+
+        }
+
+    </div>
+    <div class="footer">
+       
+    </div>
+</div>
+

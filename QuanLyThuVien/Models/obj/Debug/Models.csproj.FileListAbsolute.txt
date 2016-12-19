@@ -1,0 +1,13 @@
+D:\KienThuc_LapTrinh\XDPM\QuanLyThuVien\Models\bin\Debug\Models.dll.config
+D:\KienThuc_LapTrinh\XDPM\QuanLyThuVien\Models\bin\Debug\Models.dll
+D:\KienThuc_LapTrinh\XDPM\QuanLyThuVien\Models\bin\Debug\Models.pdb
+D:\KienThuc_LapTrinh\XDPM\QuanLyThuVien\Models\bin\Debug\EntityFramework.dll
+D:\KienThuc_LapTrinh\XDPM\QuanLyThuVien\Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\KienThuc_LapTrinh\XDPM\QuanLyThuVien\Models\bin\Debug\EntityFramework.xml
+D:\KienThuc_LapTrinh\XDPM\QuanLyThuVien\Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\KienThuc_LapTrinh\XDPM\QuanLyThuVien\Models\obj\Debug\Models.Migrations.init.resources
+D:\KienThuc_LapTrinh\XDPM\QuanLyThuVien\Models\obj\Debug\Models.Migrations.Sua_phieumuon_ngaytra_docgia_mathetv.resources
+D:\KienThuc_LapTrinh\XDPM\QuanLyThuVien\Models\obj\Debug\Models.Migrations.sua_maphieumuon.resources
+D:\KienThuc_LapTrinh\XDPM\QuanLyThuVien\Models\obj\Debug\Models.csproj.GenerateResource.Cache
+D:\KienThuc_LapTrinh\XDPM\QuanLyThuVien\Models\obj\Debug\Models.dll
+D:\KienThuc_LapTrinh\XDPM\QuanLyThuVien\Models\obj\Debug\Models.pdb

@@ -1,0 +1,23 @@
+.banner {
+  margin-top: 8px;
+  width: 100%;
+  line-height: 32px;
+}
+.banner i {
+  line-height: 32px;
+  margin-left: 6px;
+  height: 100%;
+}
+.banner .navbar {
+  background-color: red;
+  margin-bottom: 0;
+}
+.banner .navbar a {
+  text-transform: uppercase;
+  color: black;
+  font-weight: bold;
+}
+.banner .navbar a:hover {
+  text-decoration: none;
+}
+
