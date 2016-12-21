@@ -7,12 +7,18 @@ using Models;
 using System.Dynamic;
 using PagedList;
 using PagedList.Mvc;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.ComponentModel;
+using System.Collections;
 
 
 namespace WebForm.Controllers
 {
     public class MuonSachController : Controller
     {
+
+
         //
         // GET: /MuonSach/
         QuanLyThuVienDB db = new QuanLyThuVienDB();
@@ -67,10 +73,12 @@ namespace WebForm.Controllers
            
         }
 
+        
+
         //
         // GET: /MuonSach/Create
 
-        public ActionResult Create(string tim_doc_gia)
+        public ActionResult Create(string tim_doc_gia, int? id_dau_sach)
         {
             //ViewBag.ngay_muon = ngay_muon;
             //ViewBag.ngay_tra = ngay_tra;
@@ -80,27 +88,39 @@ namespace WebForm.Controllers
                           select s;
 
             var dau_sach = from ds in db.dau_sach
+                            where ds.id_tinh_trang == 2 && ds.so_luong_cuon_sach > 0
+                            //group cs by ds into gr
                            select ds;
-            //var dg = new doc_gia();
 
-            //var dg = new doc_gia();
-            //int id_doc_gia = dg.Get_id_doc_gia(tim_doc_gia);
-            //ViewBag.iddg = id_doc_gia;
-            //var pm = new phieu_muon();
-            //int idpm = pm.Get_Id_Latest(1);
-            //ViewBag.idpm = idpm;
+
+            //var count = dau_sach.Count();
            
 
+            //ViewBag.so_luong_cuon_sach = 0;
+
+            //List<int> list_cuon_sach = new List<int>();
 
 
+            
+            //    foreach (var item in dau_sach)
+            //    {
+            //        var cuon_sach_lst = (from cs in db.cuon_sach
+            //                             join ds in db.dau_sach on cs.id_dau_sach equals ds.id
+            //                             where cs.id_dau_sach == @item.  && cs.id_tinh_trang == 6
+            //                             select cs).Count();
+            //        list_cuon_sach.Add(cuon_sach_lst);
+            //    }
+           
+            
+           
+           //var check_sl_cuon_sach = cuon_sach.Count();
+            //ViewBag.so_luong_cuon_sach = 8;
+            //ViewBag.so_luong_cuon_sach = check_sl_cuon_sach;
+            //phieu_muon pm_dm = db.phieu_muon.Find(30);
 
-            //int idpm = ViewBag.idpm;
 
-            //var phieu_muon_chi_tiet = from pmct in db.phieu_muon_chi_tiet
-            //                          where pmct.id_phieu_muon == idpm
-            //                          select pmct;
-            //phieu_muon_chi_tiet = phieu_muon_chi_tiet.Where(pmct => pmct.id_phieu_muon.Equals(idpm));
-
+            
+           
             if (!String.IsNullOrEmpty(tim_doc_gia))
             {
                 doc_gia = doc_gia.Where(s => s.ma_the_thu_vien.Contains(tim_doc_gia));
@@ -110,17 +130,33 @@ namespace WebForm.Controllers
                 //    id_doc_gia = id_doc_gia.Where(s1 => s1.ma_the_thu_vien.Contains(tim_doc_gia)) ;
                 //    ViewBag.id_doc_gia = id_doc_gia;
                 //}
+                Session.Remove("s_tim_doc_gia");
+                Session["s_tim_doc_gia"] = tim_doc_gia;
 
             }
             else
             {
                 doc_gia = from s in db.doc_gia
                           select s;
+              
+                if (!String.IsNullOrEmpty((string)(Session["s_tim_doc_gia"])))
+                {
+                    tim_doc_gia = (string)(Session["s_tim_doc_gia"]);
+                    doc_gia = doc_gia.Where(s => s.ma_the_thu_vien.Contains(tim_doc_gia));
+                }
             }
             Mymodel.Add(doc_gia.ToList());
             Mymodel.Add(dau_sach.ToList());
+            //Mymodel.Add(list_cuon_sach.ToList());
             //Mymodel.Add(phieu_muon_chi_tiet.ToList());
+            //return View(Mymodel);
             return View(Mymodel);
+
+            //var cuon_sach_lst1 = (from cs in db.cuon_sach
+            //                     join ds in db.dau_sach on cs.id_dau_sach equals ds.id
+            //                     where cs.id_tinh_trang == 6
+            //                     select cs).Count();
+            //return Json(Mymodel, JsonRequestBehavior.AllowGet);
         }
 
         //
@@ -128,7 +164,7 @@ namespace WebForm.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create()
+        public JsonResult Create(Object obj)
         {
             //if (ModelState.IsValid)
             //{
@@ -154,10 +190,17 @@ namespace WebForm.Controllers
             //ngay_muon = ngay_muon;
             //if (res > 0)
            // return RedirectToAction("Create", new { tim_doc_gia = ma_doc_gia });
-            return View();
+            //return View();
+            return Json(obj);
             
             
 
+        }
+
+        public ActionResult Hello()
+        {
+            return Content("Hello Ajax", "text/plain");
+            //return View();
         }
 
         //

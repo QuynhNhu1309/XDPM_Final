@@ -24,6 +24,9 @@ namespace Models
         public  DbSet<phieu_tra_chi_tiet> phieu_tra_chi_tiet { get; set; }
         public  DbSet<tac_gia> tac_gia { get; set; }
         public  DbSet<trang_thai> trang_thai { get; set; }
+        public DbSet<phieu_nhap> phieu_nhap { get; set; }
+
+        public DbSet<phieu_nhap_chi_tiet> phieu_nhap_chi_tiet { get; set; }
 
         //public IEnumerable<doc_gia> Search(string tim_doc_gia)
         //{

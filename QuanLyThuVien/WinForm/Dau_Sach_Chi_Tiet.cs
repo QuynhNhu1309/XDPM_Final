@@ -74,5 +74,10 @@ namespace WinForm
         {
             this.Visible = false;
         }
+
+        private void ma_dau_sach_xem_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

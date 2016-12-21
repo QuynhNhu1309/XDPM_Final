@@ -53,23 +53,17 @@
     <Compile Include="dau_sach.cs" />
     <Compile Include="doc_gia.cs" />
     <Compile Include="loai_sach.cs" />
-    <Compile Include="Migrations\201611091604006_init.cs" />
-    <Compile Include="Migrations\201611091604006_init.Designer.cs">
-      <DependentUpon>201611091604006_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611191453031_Sua_phieumuon_ngaytra_docgia_mathetv.cs" />
-    <Compile Include="Migrations\201611191453031_Sua_phieumuon_ngaytra_docgia_mathetv.Designer.cs">
-      <DependentUpon>201611191453031_Sua_phieumuon_ngaytra_docgia_mathetv.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611200432064_sua_maphieumuon.cs" />
-    <Compile Include="Migrations\201611200432064_sua_maphieumuon.Designer.cs">
-      <DependentUpon>201611200432064_sua_maphieumuon.cs</DependentUpon>
+    <Compile Include="Migrations\201612211130231_Initial.cs" />
+    <Compile Include="Migrations\201612211130231_Initial.Designer.cs">
+      <DependentUpon>201612211130231_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="nhan_vien.cs" />
     <Compile Include="nha_xuat_ban.cs" />
     <Compile Include="phieu_muon.cs" />
     <Compile Include="phieu_muon_chi_tiet.cs" />
+    <Compile Include="phieu_nhap.cs" />
+    <Compile Include="phieu_nhap_chi_tiet.cs" />
     <Compile Include="phieu_tra.cs" />
     <Compile Include="phieu_tra_chi_tiet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,17 +77,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611091604006_init.resx">
-      <DependentUpon>201611091604006_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611191453031_Sua_phieumuon_ngaytra_docgia_mathetv.resx">
-      <DependentUpon>201611191453031_Sua_phieumuon_ngaytra_docgia_mathetv.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611200432064_sua_maphieumuon.resx">
-      <DependentUpon>201611200432064_sua_maphieumuon.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612211130231_Initial.resx">
+      <DependentUpon>201612211130231_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

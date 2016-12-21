@@ -40,5 +40,7 @@ namespace Models
         public string dia_chi { get; set; }
 
         public virtual ICollection<dau_sach> dau_sach { get; set; }
+
+        public virtual ICollection<phieu_nhap_chi_tiet> phieu_nhap_chi_tiet { get; set; }
     }
 }

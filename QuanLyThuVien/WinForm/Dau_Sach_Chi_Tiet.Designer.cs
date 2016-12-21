@@ -44,7 +44,7 @@
             this.lbl_ten_dau_sach = new System.Windows.Forms.Label();
             this.lbl = new System.Windows.Forms.Label();
             this.ma_dau_sach_xem = new System.Windows.Forms.TextBox();
-            this.lbl_sua_dau_sach = new System.Windows.Forms.Label();
+            this.lbl_xem_dau_sach = new System.Windows.Forms.Label();
             this.lbl_ma_dau_sach = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -60,6 +60,7 @@
             // 
             // tac_gia_xem
             // 
+            this.tac_gia_xem.Enabled = false;
             this.tac_gia_xem.FormattingEnabled = true;
             this.tac_gia_xem.Location = new System.Drawing.Point(534, 176);
             this.tac_gia_xem.Name = "tac_gia_xem";
@@ -68,6 +69,7 @@
             // 
             // tinh_trang_xem
             // 
+            this.tinh_trang_xem.Enabled = false;
             this.tinh_trang_xem.FormattingEnabled = true;
             this.tinh_trang_xem.Location = new System.Drawing.Point(535, 224);
             this.tinh_trang_xem.Name = "tinh_trang_xem";
@@ -76,6 +78,7 @@
             // 
             // nxb_xem
             // 
+            this.nxb_xem.Enabled = false;
             this.nxb_xem.FormattingEnabled = true;
             this.nxb_xem.Location = new System.Drawing.Point(535, 86);
             this.nxb_xem.Name = "nxb_xem";
@@ -84,6 +87,7 @@
             // 
             // loai_sach_xem
             // 
+            this.loai_sach_xem.Enabled = false;
             this.loai_sach_xem.FormattingEnabled = true;
             this.loai_sach_xem.Location = new System.Drawing.Point(208, 181);
             this.loai_sach_xem.Name = "loai_sach_xem";
@@ -94,6 +98,7 @@
             // 
             this.nam_xuat_ban_xem.Location = new System.Drawing.Point(535, 133);
             this.nam_xuat_ban_xem.Name = "nam_xuat_ban_xem";
+            this.nam_xuat_ban_xem.ReadOnly = true;
             this.nam_xuat_ban_xem.Size = new System.Drawing.Size(132, 20);
             this.nam_xuat_ban_xem.TabIndex = 14;
             // 
@@ -102,6 +107,7 @@
             this.tom_tat_xem.Location = new System.Drawing.Point(208, 229);
             this.tom_tat_xem.Multiline = true;
             this.tom_tat_xem.Name = "tom_tat_xem";
+            this.tom_tat_xem.ReadOnly = true;
             this.tom_tat_xem.Size = new System.Drawing.Size(145, 36);
             this.tom_tat_xem.TabIndex = 13;
             // 
@@ -109,6 +115,7 @@
             // 
             this.ten_dau_sach_xem.Location = new System.Drawing.Point(208, 136);
             this.ten_dau_sach_xem.Name = "ten_dau_sach_xem";
+            this.ten_dau_sach_xem.ReadOnly = true;
             this.ten_dau_sach_xem.Size = new System.Drawing.Size(133, 20);
             this.ten_dau_sach_xem.TabIndex = 16;
             // 
@@ -179,18 +186,20 @@
             // 
             this.ma_dau_sach_xem.Location = new System.Drawing.Point(208, 89);
             this.ma_dau_sach_xem.Name = "ma_dau_sach_xem";
+            this.ma_dau_sach_xem.ReadOnly = true;
             this.ma_dau_sach_xem.Size = new System.Drawing.Size(133, 20);
             this.ma_dau_sach_xem.TabIndex = 15;
+            this.ma_dau_sach_xem.TextChanged += new System.EventHandler(this.ma_dau_sach_xem_TextChanged);
             // 
-            // lbl_sua_dau_sach
+            // lbl_xem_dau_sach
             // 
-            this.lbl_sua_dau_sach.AutoSize = true;
-            this.lbl_sua_dau_sach.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_sua_dau_sach.Location = new System.Drawing.Point(308, 35);
-            this.lbl_sua_dau_sach.Name = "lbl_sua_dau_sach";
-            this.lbl_sua_dau_sach.Size = new System.Drawing.Size(218, 31);
-            this.lbl_sua_dau_sach.TabIndex = 11;
-            this.lbl_sua_dau_sach.Text = "SỬA ĐẦU SÁCH";
+            this.lbl_xem_dau_sach.AutoSize = true;
+            this.lbl_xem_dau_sach.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_xem_dau_sach.Location = new System.Drawing.Point(261, 32);
+            this.lbl_xem_dau_sach.Name = "lbl_xem_dau_sach";
+            this.lbl_xem_dau_sach.Size = new System.Drawing.Size(342, 31);
+            this.lbl_xem_dau_sach.TabIndex = 11;
+            this.lbl_xem_dau_sach.Text = "XEM CHI TIẾT ĐẦU SÁCH";
             // 
             // lbl_ma_dau_sach
             // 
@@ -222,7 +231,7 @@
             this.Controls.Add(this.lbl_ten_dau_sach);
             this.Controls.Add(this.lbl);
             this.Controls.Add(this.ma_dau_sach_xem);
-            this.Controls.Add(this.lbl_sua_dau_sach);
+            this.Controls.Add(this.lbl_xem_dau_sach);
             this.Controls.Add(this.lbl_ma_dau_sach);
             this.Name = "Dau_Sach_Chi_Tiet";
             this.Text = "Dau_Sach_Chi_Tiet";
@@ -250,7 +259,7 @@
         public System.Windows.Forms.Label lbl_ten_dau_sach;
         public System.Windows.Forms.Label lbl;
         public System.Windows.Forms.TextBox ma_dau_sach_xem;
-        public System.Windows.Forms.Label lbl_sua_dau_sach;
+        public System.Windows.Forms.Label lbl_xem_dau_sach;
         public System.Windows.Forms.Label lbl_ma_dau_sach;
 
 

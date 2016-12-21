@@ -35,6 +35,10 @@
             this.btn_sua = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btn_them_cuon_sach = new System.Windows.Forms.Button();
+            this.btn_next_end = new System.Windows.Forms.Button();
+            this.btn_next = new System.Windows.Forms.Button();
+            this.btn_back = new System.Windows.Forms.Button();
+            this.btn_back_e = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_dau_sach)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,10 +99,11 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
+            "1",
             "2",
             "3",
             "4"});
-            this.comboBox1.Location = new System.Drawing.Point(719, 27);
+            this.comboBox1.Location = new System.Drawing.Point(625, 29);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 3;
@@ -114,11 +119,55 @@
             this.btn_them_cuon_sach.UseVisualStyleBackColor = true;
             this.btn_them_cuon_sach.Click += new System.EventHandler(this.btn_them_cuon_sach_Click);
             // 
+            // btn_next_end
+            // 
+            this.btn_next_end.Location = new System.Drawing.Point(866, 27);
+            this.btn_next_end.Name = "btn_next_end";
+            this.btn_next_end.Size = new System.Drawing.Size(32, 23);
+            this.btn_next_end.TabIndex = 5;
+            this.btn_next_end.Text = ">>";
+            this.btn_next_end.UseVisualStyleBackColor = true;
+            this.btn_next_end.Click += new System.EventHandler(this.btn_next_end_Click);
+            // 
+            // btn_next
+            // 
+            this.btn_next.Location = new System.Drawing.Point(828, 27);
+            this.btn_next.Name = "btn_next";
+            this.btn_next.Size = new System.Drawing.Size(32, 23);
+            this.btn_next.TabIndex = 5;
+            this.btn_next.Text = ">";
+            this.btn_next.UseVisualStyleBackColor = true;
+            this.btn_next.Click += new System.EventHandler(this.btn_next_Click);
+            // 
+            // btn_back
+            // 
+            this.btn_back.Location = new System.Drawing.Point(790, 27);
+            this.btn_back.Name = "btn_back";
+            this.btn_back.Size = new System.Drawing.Size(32, 23);
+            this.btn_back.TabIndex = 5;
+            this.btn_back.Text = "<";
+            this.btn_back.UseVisualStyleBackColor = true;
+            this.btn_back.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btn_back_e
+            // 
+            this.btn_back_e.Location = new System.Drawing.Point(752, 27);
+            this.btn_back_e.Name = "btn_back_e";
+            this.btn_back_e.Size = new System.Drawing.Size(32, 23);
+            this.btn_back_e.TabIndex = 6;
+            this.btn_back_e.Text = "<<";
+            this.btn_back_e.UseVisualStyleBackColor = true;
+            this.btn_back_e.Click += new System.EventHandler(this.btn_back_e_Click);
+            // 
             // DauSach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(910, 400);
+            this.Controls.Add(this.btn_back_e);
+            this.Controls.Add(this.btn_back);
+            this.Controls.Add(this.btn_next);
+            this.Controls.Add(this.btn_next_end);
             this.Controls.Add(this.btn_them_cuon_sach);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btn_sua);
@@ -127,7 +176,7 @@
             this.Controls.Add(this.dtgv_dau_sach);
             this.Controls.Add(this.label1);
             this.Name = "DauSach";
-            this.Text = "DauSach";
+            this.Text = "<<";
             this.Load += new System.EventHandler(this.DauSach_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_dau_sach)).EndInit();
             this.ResumeLayout(false);
@@ -144,5 +193,9 @@
         public System.Windows.Forms.DataGridView dtgv_dau_sach;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btn_them_cuon_sach;
+        private System.Windows.Forms.Button btn_next_end;
+        private System.Windows.Forms.Button btn_next;
+        private System.Windows.Forms.Button btn_back;
+        private System.Windows.Forms.Button btn_back_e;
     }
 }

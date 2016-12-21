@@ -18,6 +18,10 @@ namespace WinForm
         QuanLyThuVienDB db = new QuanLyThuVienDB();
         dau_sach dau_sach = new dau_sach();
         DauSachViewModel ds_view = new DauSachViewModel();
+        public int current_page_Index = 0;
+        public int number_page = 1;
+        public int total_dau_sach = 1;
+        public int number_record = 2;
        
         public DauSach()
         {
@@ -26,33 +30,119 @@ namespace WinForm
             
         }
 
-        public void Refresh_Form(Int32 number_record)
+        public void Refresh_Form(Int32 number_record, Int32 current_page_Index)
         {
+
+            total_dau_sach = db.dau_sach.Count();
+            number_page = total_dau_sach / number_record;
+            if(total_dau_sach % number_record > 0)
+            {
+                number_page = number_page + 1;
+            }
+            number_page = number_page - 1;
+
+            //Xét điều kiện nếu trang đầu tiên thì không cho <
+            if (current_page_Index == 0)
+            {
+                btn_back.Enabled = false;
+            }
+            if (current_page_Index > 0)
+            {
+                btn_back.Enabled = true;
+            }
+
+            //Nếu trang đầu tiên thì không cho <<
+            if (current_page_Index == 0)
+            {
+                btn_back_e.Enabled = false;
+            }
+            if (current_page_Index > 0)
+            {
+                btn_back_e.Enabled = true;
+            }
+
+            //Nếu trang cuối cùng thì không cho >
+            if (current_page_Index == number_page)
+            {
+                btn_next.Enabled = false;
+            }
+            if (current_page_Index >= 0 && current_page_Index < number_page)
+            {
+                btn_next.Enabled = true;
+            }
+
+            //Nếu trang cuối cùng thì không cho >>
+            if (current_page_Index == number_page)
+            {
+                btn_next_end.Enabled = false;
+            }
+            if (current_page_Index >= 0 && current_page_Index < number_page)
+            {
+                btn_next_end.Enabled = true;
+            }
+
+
+          
+            //MessageBox.Show("number_record = " + number_record.ToString());
+            //MessageBox.Show("current_page_Index = " + current_page_Index.ToString());
             //var bindinglist = new BindingList<DauSachViewModel>(db.dau_sach.ToList().Select(i => new DauSachViewModel(i)).Take///(4).ToList());
 
 
             //var query =  from p in db.dau_sach 
             //            select new { p.ma_dau_sach, p.ten_dau_sach, p.id_loai_sach };
-            var q = (from w in db.dau_sach
-                     select new
-                     {
-                         w.id,
-                         w.ma_dau_sach,
-                         w.ten_dau_sach, //0,1,2
-                         w.id_loai_sach,
-                         w.loai_sach.ten_loai,//3,4
-                         w.tom_tat,
-                         w.id_nxb,
-                         w.nha_xuat_ban.ten_nxb, //5,6,7
-                         w.so_luong_cuon_sach,
-                         w.nam_xuat_ban, //8,9
-                         w.id_tac_gia,
-                         w.tac_gia.ho_ten, //10,11
-                         w.id_tinh_trang,
-                         w.trang_thai.ten_trang_thai
-                     }) //12,13
-                                  .Take(number_record).ToList();
-            dtgv_dau_sach.DataSource = q.ToList();
+
+            
+           // MessageBox.Show(total_dau_sach.ToString());
+            
+            
+           
+            if (current_page_Index == 0)
+            {
+                var q = (from w in db.dau_sach.AsEnumerable()
+                         select new
+                         {
+                             w.id,
+                             w.ma_dau_sach,
+                             w.ten_dau_sach, //0,1,2
+                             w.id_loai_sach,
+                             w.loai_sach.ten_loai,//3,4
+                             w.tom_tat,
+                             w.id_nxb,
+                             w.nha_xuat_ban.ten_nxb, //5,6,7
+                             w.so_luong_cuon_sach,
+                             w.nam_xuat_ban, //8,9
+                             w.id_tac_gia,
+                             w.tac_gia.ho_ten, //10,11
+                             w.id_tinh_trang,
+                             w.trang_thai.ten_trang_thai
+                         }) //12,13
+                           .Skip(current_page_Index * number_record).Take(number_record).ToList();
+                dtgv_dau_sach.DataSource = q.ToList();
+            }
+            else if (current_page_Index > 0)
+            {
+                    var q = (from w in db.dau_sach.AsEnumerable()
+                             select new
+                             {
+                                 w.id,
+                                 w.ma_dau_sach,
+                                 w.ten_dau_sach, //0,1,2
+                                 w.id_loai_sach,
+                                 w.loai_sach.ten_loai,//3,4
+                                 w.tom_tat,
+                                 w.id_nxb,
+                                 w.nha_xuat_ban.ten_nxb, //5,6,7
+                                 w.so_luong_cuon_sach,
+                                 w.nam_xuat_ban, //8,9
+                                 w.id_tac_gia,
+                                 w.tac_gia.ho_ten, //10,11
+                                 w.id_tinh_trang,
+                                 w.trang_thai.ten_trang_thai
+                             }) //12,13
+                               .Skip(current_page_Index * number_record).Take(number_record).ToList();
+                    dtgv_dau_sach.DataSource = q.ToList();
+            }
+            
             //var bindinglist = new BindingList<dau_sach>(db.dau_sach.ToList().Select(w => new w.ma_dau_sach).ToList());
             //var source = new BindingSource(bindinglist, null);
             //dtgv_dau_sach.DataSource = source;
@@ -108,7 +198,8 @@ namespace WinForm
         private void DauSach_Load(object sender, EventArgs e)
         {
 
-            Refresh_Form(3);
+            Refresh_Form(number_record, current_page_Index);
+           
            
 
         }
@@ -134,7 +225,7 @@ namespace WinForm
                  db.SaveChanges();
                  this.Visible = false;
                  MessageBox.Show("Xóa thành công");
-                 Refresh_Form(3);
+                 Refresh_Form(3, current_page_Index);
                  DauSach frm = new DauSach();
                  frm.Show();
                  
@@ -156,7 +247,7 @@ namespace WinForm
             {
                 //Lấy id chuyển qua form sửa
                 Int32 id = int.Parse(this.dtgv_dau_sach.CurrentRow.Cells[0].Value.ToString());
-                DauSach_Sua frm = new DauSach_Sua(id);
+                DauSach_Sua frm = new DauSach_Sua(id, current_page_Index);
 
                 frm.ma_dau_sach_sua.Text = this.dtgv_dau_sach.CurrentRow.Cells[1].Value.ToString();
                 frm.ten_dau_sach_sua.Text = this.dtgv_dau_sach.CurrentRow.Cells[2].Value.ToString();
@@ -269,8 +360,8 @@ namespace WinForm
         {
             int selectedIndex = comboBox1.SelectedIndex;
             Object selectedItem = comboBox1.SelectedItem;
-            int var = int.Parse(selectedItem.ToString());
-            Refresh_Form(var);
+            number_record = int.Parse(selectedItem.ToString());
+            Refresh_Form(number_record, current_page_Index);
             //MessageBox.Show("Selected Item Text: " + selectedItem.ToString() + "\n");
             //var q = (from w in db.dau_sach
             //         select new { w.ma_dau_sach, w.ten_dau_sach, w.loai_sach.ten_loai, w.trang_thai.ten_trang_thai }).Take(var);
@@ -291,6 +382,56 @@ namespace WinForm
                 DauSach_Them_SL_CuonSach frm = new DauSach_Them_SL_CuonSach(id_current);
                 frm.Show();
             }  
+        }
+
+
+        //Quay về trang trước
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (current_page_Index <= number_page)
+            {
+                current_page_Index = current_page_Index - 1;
+                Refresh_Form(number_record, current_page_Index);
+            }
+        }
+
+
+        //Xem trang kế tiếp
+        private void btn_next_Click(object sender, EventArgs e)
+        {
+            if (current_page_Index < number_page)
+            {
+                current_page_Index = current_page_Index + 1;
+                Refresh_Form(number_record, current_page_Index);
+            }
+
+           
+
+
+            //    total_dau_sach = db.dau_sach.Count();
+            //number_page = total_dau_sach / number_record;
+
+        }
+
+
+        //Xem trang cuối cùng
+        private void btn_next_end_Click(object sender, EventArgs e)
+        {
+                current_page_Index = number_page;
+                Refresh_Form(number_record, current_page_Index);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Xem trang đầu tiên
+        private void btn_back_e_Click(object sender, EventArgs e)
+        {
+                current_page_Index = 0;
+                Refresh_Form(number_record, current_page_Index);
+            
         }
     }
 }

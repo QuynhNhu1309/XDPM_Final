@@ -26,10 +26,12 @@ namespace WebForm
 
 
             bundles.Add(new ScriptBundle("~/Scripts/Custom").Include(
-                        "~/Scripts/Custom/mobile.js"));
+                        "~/Scripts/Custom/mobile.js",
+                        "~/Scripts/Custom/Nhu_Script_custom.js")
+                    );
 
-            bundles.Add(new ScriptBundle("~/Scripts/Custom").Include(
-                        "~/Scripts/Custom/Nhu_Script_custom.js"));
+            //bundles.Add(new ScriptBundle("~/Scripts/Custom").Include(
+              //          "~/Scripts/Custom/Nhu_Script_custom.js"));
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

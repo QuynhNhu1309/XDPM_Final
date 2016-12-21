@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Library.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.hl').click(function () {
+            $.ajax({
+                type: get,
+                url:@Url.Action("Hello","MuonSach"),
+                success:function(result)
+                {
+                    $('#rs1').html(result);
+                }
+            });
+
+        });
+    });
+</script>
+
+<a href="#" class="hl"> Hello</a>
+<div id="rs1"></div>
+

@@ -18,10 +18,12 @@ namespace WinForm
 
         private QuanLyThuVienDB db = new QuanLyThuVienDB();
         public Models.dau_sach dau_sach_ins = new dau_sach();
+        public int current_page_Index = 0;
 
-        public DauSach_Sua(Int32 id_current)
+        public DauSach_Sua(Int32 id_current, Int32 current_page_Index1)
         {
             dau_sach_ins.id = id_current;
+            current_page_Index = current_page_Index1;
             InitializeComponent();
         }
         public DauSach_Sua(Models.dau_sach ds)
@@ -91,7 +93,9 @@ namespace WinForm
             obj.nam_xuat_ban = int.Parse(nam_xuat_ban_sua.Text);
             obj.id_tac_gia = int.Parse(tac_gia_sua.SelectedValue.ToString());
             obj.id_tinh_trang = int.Parse(tinh_trang_sua.SelectedValue.ToString());
-
+            
+            phieu_nhap_chi_tiet obj_pnct = db.phieu_nhap_chi_tiet.Where(w => w.id_dau_sach == dau_sach_ins.id).FirstOrDefault();
+            obj_pnct.id_nha_xuat_ban = int.Parse(nxb_sua.SelectedValue.ToString());
            // var list = context.Products.ToList().Select(i => new Product2(i)).ToList();
             //var bindingList = new BindingList<Product2>(list);
             //var source = new BindingSource(bindingList, null);
@@ -106,7 +110,7 @@ namespace WinForm
 
             this.Visible = false;
             DauSach frm = new DauSach();
-            frm.Refresh_Form(3);
+            frm.Refresh_Form(3, current_page_Index);
             frm.Show();
             
             //frm.Refresh_dtgv(List<Product2> list);

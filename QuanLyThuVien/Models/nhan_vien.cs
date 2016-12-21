@@ -59,5 +59,7 @@ namespace Models
         public virtual ICollection<phieu_muon> phieu_muon { get; set; }
 
         public virtual ICollection<phieu_tra> phieu_tra { get; set; }
+
+        public virtual ICollection<phieu_nhap> phieu_nhap { get; set; }
     }
 }

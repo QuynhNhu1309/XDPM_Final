@@ -375,6 +375,7 @@
     <Content Include="Views\MuonSach\Index.cshtml" />
     <Content Include="Views\MuonSach\Create.cshtml" />
     <Content Include="Views\MuonSach\Details.cshtml" />
+    <Content Include="Views\MuonSach\Hello.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

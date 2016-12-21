@@ -50,6 +50,9 @@ namespace WinForm
                 }
                 
             }
+            this.Hide();
+            DauSach frm = new DauSach();
+            frm.Show();
         }
     }
 }

@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout_Library.cshtml";
     List<Models.doc_gia> lst_docgia = Model.ToList()[0] as List<Models.doc_gia>;
     List<Models.dau_sach> lst_dausach = Model.ToList()[1] as List<Models.dau_sach>;
+    //List<Models.cuon_sach> lst_cuonsach = Model.ToList()[2] as List<Models.cuon_sach>;
    // List<Models.phieu_muon_chi_tiet> lst_pmct = Model.ToList()[2] as List<Models.phieu_muon_chi_tiet>;
 }
 
@@ -38,54 +39,67 @@
                     
                
                  
-                       
+                    <form>
                         <fieldset>
                             <legend>PHIẾU MƯỢN</legend>
 
                             <div class="row">
+
                                 <div class="col-md-8">
                                     <div class="form-group">
-
-                                        <label for="dau_sach">Chọn đầu sách</label>
+                                        <p id="error"></p>
+                                        <label for="id_dau_sach">Chọn đầu sách</label>
                                         <select class="form-control input-sm" id="id_dau_sach" name="id_dau_sach">
                                             @foreach (var item in lst_dausach)
                                             {
-                                                <option value="@item.id" 
-                                           
-                                            
-                                            >@Html.DisplayFor(modelItem => item.ten_dau_sach)</option>
+                                                <option value="@item.id">@item.ten_dau_sach</option>
                                             }
 
-                                            </select>
+                                        </select>
 
                                     </div>
                                 </div>
 
                                 <div class="col-md-1">
+
+                                   
+
                                 </div>
 
                                 <div class="col-md-3">
                                     <div class="form-group">
+                                       
+                                             @foreach (var item in lst_dausach)
+                                            {
+                                              
+                                                <input type="number" min="1" max="10" step="1" size="6" id="@item.id"
+                                                 value="@item.so_luong_cuon_sach" class="form-control input-sm">
+                                               
+
+                                            }
+
                                         <label for="so_luong">Số lượng </label>
-                                        <input type="NUMBER" min="1" max="10" step="1" value="1" size="6" id="so_luong" class="form-control input-sm" name="so_luong">
+                                        <input type="NUMBER" min="1" max="20" step="1" size="100" id="so_luong"
+                                               value="1" class="form-control input-sm" name="so_luong">
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row"><button onclick="createTable_MuonSach()" class="btn btn-primary">CHO MƯỢN</button></div>
+                            <div class="row"><button type="button" onclick="createTable_MuonSach()" class="btn btn-primary">CHO MƯỢN</button></div>
 
 
 
 
-                            
+
                         </fieldset>
-                    
+                    </form>
+
                    
                 </div>
 
-                @using(Html.BeginForm("Create", "MuonSach", FormMethod.Post))
+                @*@using(Html.BeginForm("Create", "MuonSach", FormMethod.Post))
                     {
-                    @Html.AntiForgeryToken()
+                    @Html.AntiForgeryToken()*@
 
                 <div class="row">  
                     <div class="col-md-11">
@@ -93,9 +107,9 @@
                             <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Mã phiếu mượn</th>
-                                    <th>Mã độc giả</th>
-                                    <th>Mã cuốn sách</th>
+                                    <th>Tên đầu sách</th>
+                                    <th>Số lượng mượn</th>
+                                    <th>Chức năng</th>
                                 </tr>
                             </thead>
                         </table>
@@ -124,7 +138,7 @@
                     
                  <div class="row">
 
-                        <input type="text" name="id_doc_gia" value="@if (lst_docgia.Count() == 1)
+                     <input type="text" name="id_doc_gia" id="id_doc_gia" value="@if (lst_docgia.Count() == 1)
                                                           {
                                                              foreach (var item in lst_docgia)                                                       { @Html.DisplayFor(modelItem => item.id)}
                                                           }" />
@@ -137,10 +151,10 @@
 
                 </div>
                     
-                <div class="row"><button type="submit" class="btn btn-primary">LƯU</button></div>
+                <div class="row"><button type="button" onclick="Process_Them_PM()"  class="btn btn-primary">LƯU</button></div>
 
 
-                    }
+                    <!-- } -->
 
 
 
@@ -184,12 +198,50 @@
             {
                 Response.Write("<script>alert('Không tìm thấy mã thẻ thư viện này');</script>");
             }
+            
+            @*if(ViewBag.so_luong_cuon_sach > 0)
+            {
+                <script>
+                    //var i = 0;
+                    var table = document.getElementById("table_create_phieu_muon");
+                    var row = table.insertRow(1);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    var cell4 = row.insertCell(4);
+                    var $j = jQuery.noConflict();
+                    //if (i = 0)
+                    //{ i = i + 1; tmp = i; }
+                    //else {
+                    //    i = tmp + 1;
+                    //}
+                    var so_luong_muon = $j("#so_luong").val();
+                    alert(so_luong_muon);
+                    //var so_luong_muon = $j("#so_luong").val();
+                    console.log(so_luong_muon);
+                    cell1.innerHTML = 1;
+                    cell2.innerHTML = "NEW CELL2";
+                    cell3.innerHTML = so_luong_muon;
+                    cell4.innerHTML = "NEW CELL4";
+                    cell5.innerHTML = "NEW CELL5";
+                  //  tmp = i;
+                  
+                    
+                
+                </script>
+                
+            }*@
 
         }
 
     </div>
-    <div class="footer">
-       
-    </div>
+
+
+    
+
+ <div class="footer">
+
 </div>
+ </div>
 
