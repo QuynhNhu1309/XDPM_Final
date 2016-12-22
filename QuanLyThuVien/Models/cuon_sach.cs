@@ -41,9 +41,9 @@ namespace Models
         [ForeignKey("id_tinh_trang")]
         public virtual trang_thai trang_thai { get; set; }
         
-        public virtual ICollection<phieu_muon_chi_tiet> phieu_muon_chi_tiet { get; set; }
+        //public virtual ICollection<phieu_muon_chi_tiet> phieu_muon_chi_tiet { get; set; }
         
-        public virtual ICollection<phieu_tra_chi_tiet> phieu_tra_chi_tiet { get; set; }
+        //public virtual ICollection<phieu_tra_chi_tiet> phieu_tra_chi_tiet { get; set; }
 
     }
 }

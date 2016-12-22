@@ -13,6 +13,7 @@ using System.ComponentModel;
 using System.Collections;
 
 
+
 namespace WebForm.Controllers
 {
     public class MuonSachController : Controller
@@ -42,7 +43,7 @@ namespace WebForm.Controllers
             //Mymodel.Add(doc_gia.ToList());
             //Mymodel.Add(phieu_muon.ToList().ToPagedList(page ?? 1, 3));
             //return View(Mymodel);
-            return View(phieu_muon.ToList().ToPagedList(page ?? 1, 5));
+            return View(phieu_muon.ToList().ToPagedList(page ?? 1, 10));
             //return View(phieu_muon.ToList());
         
         }
@@ -163,8 +164,8 @@ namespace WebForm.Controllers
         // POST: /MuonSach/Create
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public JsonResult Create(Object obj)
+        //[ValidateAntiForgeryToken]
+        public JsonResult Create(string []list)
         {
             //if (ModelState.IsValid)
             //{
@@ -191,9 +192,91 @@ namespace WebForm.Controllers
             //if (res > 0)
            // return RedirectToAction("Create", new { tim_doc_gia = ma_doc_gia });
             //return View();
-            return Json(obj);
+            
+           // return Content(arr, "");
+            DateTime ngaymuon = DateTime.Now;
+            DateTime ngaytra = DateTime.Now;
+            string ma_doc_gia="TV001";
+            int tongsoluongmuon = 0;
+            int j = 0;
+            int tmp = 0;
+            while (j <= list.Length)
+            {
+                if (j == 2)
+                {
+                    tongsoluongmuon += Convert.ToInt32(list[j]);
+                    tmp = j;
+                }
+                if (j % 2 == 0 && j - tmp == 4 && list.Length - j > 3)
+                {
+                    tongsoluongmuon += Convert.ToInt32(list[j]);
+                    tmp = j;
+                }
+
+                if (list.Length - j == 1)
+                {
+                    ma_doc_gia = list[j];
+                }
+
+                if (list.Length - j == 3)
+                {
+                    ngaymuon = Convert.ToDateTime(list[j]);
+                    //ngaymuon = DateTime.ParseExact(list[j], "dd/MM/yyyy", null);
+                }
+
+                if (list.Length - j == 2)
+                {
+                    ngaytra = Convert.ToDateTime(list[j]);
+                    //ngaytra = DateTime.ParseExact(list[j], "dd/MM/yyyy", null);
+                }
+                j = j + 1;
+
+
+            }
+            List<int> list_muon1 = new List<int>();
+            list_muon1.Add(tongsoluongmuon);
+
+
+            var pm = new phieu_muon();
+            //int res = pm.Them_PhieuMuon("PM010", ngay_muon, 1, so_luong, 1, 10, ngay_tra);
+            int res = pm.Them_PhieuMuon(ngaymuon, ma_doc_gia, tongsoluongmuon,ngaytra);
+
             
             
+
+            int id_dau_sach = 0;
+            int soluongmuon = 0;
+            for (int i = 1; i < list.Length - 3; i++)
+            {
+
+                if (i % 4 == 2)
+                {
+                    soluongmuon = Convert.ToInt32(list[i]);
+                }
+                if (i % 4 == 3)
+                {
+                    id_dau_sach = Convert.ToInt32(list[i]);
+                }
+                if (soluongmuon != 0 && id_dau_sach != 0)
+                {
+                    int res_pmct = pm.Them_PhieuMuon_ChiTiet(soluongmuon, id_dau_sach);
+                    soluongmuon = 0;
+                    id_dau_sach = 0;
+                }
+                
+            }
+            //int[] list_muon = new int[10];
+            List<int> list_muon = new List<int>();
+
+            list_muon.Add(id_dau_sach);
+            list_muon.Add(soluongmuon);
+            //list_muon.push(id_dau_sach);
+            //list_muon.push(soluongmuon);
+
+                //return Json(list);
+            //return Json(list_muon, JsonRequestBehavior.AllowGet);
+            //return RedirectToAction("Create", new { list=list });
+            return Json(list_muon, JsonRequestBehavior.AllowGet);
 
         }
 

@@ -17,6 +17,9 @@ INSERT INTO trang_thai(ten_trang_thai, ten_bang) VALUES(N'Chưa trả', N'phieu_
 INSERT INTO trang_thai(ten_trang_thai, ten_bang) VALUES(N'Đã trả', N'phieu_muon');
 INSERT INTO trang_thai(ten_trang_thai, ten_bang) VALUES(N'Chưa trả', N'phieu_tra');
 INSERT INTO trang_thai(ten_trang_thai, ten_bang) VALUES(N'Đã trả', N'phieu_tra');
+INSERT INTO trang_thai(ten_trang_thai, ten_bang) VALUES(N'Chưa trả', N'phieu_muon_chi_tiet');
+INSERT INTO trang_thai(ten_trang_thai, ten_bang) VALUES(N'Đã trả', N'phieu_muon_chi_tiet');
+INSERT INTO trang_thai(ten_trang_thai, ten_bang) VALUES(N'Đã in phiếu mượn', N'phieu_muon');
 
 
 --- BẢNG TÁC GIẢ ---
@@ -193,4 +196,45 @@ INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_
 INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT00002',1,2,80000,20,1600000,1);
 INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT00003',1,3,90000,20,1800000,2);
 INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT00004',1,4,90000,20,1800000,3);
+
+--- BẢNG ĐỘC GIẢ ----
+
+INSERT INTO doc_gia(ma_doc_gia, ho_ten, dia_chi, dien_thoai, ngay_cap_the, ngay_het_han, nam_tot_nghiep, so_sach_muon_toi_da, thoi_gian_muon_toi_da, cmnd, nghe_nghiep, id_tinh_trang, ma_the_thu_vien) VALUES('DG001',N'Nguyễn Văn A',N'Address',1472184024,42370,42736,2018,0,20,123456789,N'Sinh viên',6,'TV001');
+INSERT INTO doc_gia(ma_doc_gia, ho_ten, dia_chi, dien_thoai, ngay_cap_the, ngay_het_han, nam_tot_nghiep, so_sach_muon_toi_da, thoi_gian_muon_toi_da, cmnd, nghe_nghiep, id_tinh_trang, ma_the_thu_vien) VALUES('DG002',N'Nguyễn Văn B',N'Address',1234214083,42371,42737,2018,0,20,627836476,N'Sinh viên',6,'TV002');
+INSERT INTO doc_gia(ma_doc_gia, ho_ten, dia_chi, dien_thoai, ngay_cap_the, ngay_het_han, nam_tot_nghiep, so_sach_muon_toi_da, thoi_gian_muon_toi_da, cmnd, nghe_nghiep, id_tinh_trang, ma_the_thu_vien) VALUES('DG003',N'Nguyễn Văn C',N'Address',2374723740,42372,42738,2018,0,20,234174214,N'Sinh viên',6,'TV003');
+INSERT INTO doc_gia(ma_doc_gia, ho_ten, dia_chi, dien_thoai, ngay_cap_the, ngay_het_han, nam_tot_nghiep, so_sach_muon_toi_da, thoi_gian_muon_toi_da, cmnd, nghe_nghiep, id_tinh_trang, ma_the_thu_vien) VALUES('DG004',N'Nguyễn Văn D',N'Address',8348594355,42373,42739,2018,0,20,237495735,N'Sinh viên',6,'TV004');
+INSERT INTO doc_gia(ma_doc_gia, ho_ten, dia_chi, dien_thoai, ngay_cap_the, ngay_het_han, nam_tot_nghiep, so_sach_muon_toi_da, thoi_gian_muon_toi_da, cmnd, nghe_nghiep, id_tinh_trang, ma_the_thu_vien) VALUES('DG005',N'Nguyễn Văn E',N'Address',7564750324,42374,42740,2018,0,20,909879974,N'Sinh viên',6,'TV005');
+
+--- BẢNG PHIẾU MƯỢN -----
+
+
+INSERT INTO phieu_muon(ma_phieu_muon, id_doc_gia, ngay_muon,tong_so_luong_muon, id_nv, id_tinh_trang, ngay_tra) VALUES('PM001',1,42680,3,1,12,42680);
+INSERT INTO phieu_muon(ma_phieu_muon, id_doc_gia, ngay_muon,tong_so_luong_muon, id_nv, id_tinh_trang, ngay_tra) VALUES('PM002',2,42681,2,2,11,42684);
+INSERT INTO phieu_muon(ma_phieu_muon, id_doc_gia, ngay_muon,tong_so_luong_muon, id_nv, id_tinh_trang, ngay_tra) VALUES('PM003',3,42682,4,2,11,42693);
+INSERT INTO phieu_muon(ma_phieu_muon, id_doc_gia, ngay_muon,tong_so_luong_muon, id_nv, id_tinh_trang, ngay_tra) VALUES('PM004',4,42683,1,3,11,42694);
+INSERT INTO phieu_muon(ma_phieu_muon, id_doc_gia, ngay_muon,tong_so_luong_muon, id_nv, id_tinh_trang, ngay_tra) VALUES('PM005',5,42684,1,1,11,42695);
+
+
+--- BẢNG PHIẾU MƯỢN CHI TIẾT ----
+
+INSERT INTO phieu_muon_chi_tiet(ma_phieu_muon_chi_tiet, id_phieu_muon, id_dau_sach,id_tinh_trang, so_luong) VALUES('PMCT001',1,1,12,1);
+INSERT INTO phieu_muon_chi_tiet(ma_phieu_muon_chi_tiet, id_phieu_muon, id_dau_sach,id_tinh_trang, so_luong) VALUES('PMCT002',1,2,12,2);
+INSERT INTO phieu_muon_chi_tiet(ma_phieu_muon_chi_tiet, id_phieu_muon, id_dau_sach,id_tinh_trang, so_luong) VALUES('PMCT003',2,2,11,2);
+INSERT INTO phieu_muon_chi_tiet(ma_phieu_muon_chi_tiet, id_phieu_muon, id_dau_sach,id_tinh_trang, so_luong) VALUES('PMCT004',3,1,11,2);
+INSERT INTO phieu_muon_chi_tiet(ma_phieu_muon_chi_tiet, id_phieu_muon, id_dau_sach,id_tinh_trang, so_luong) VALUES('PMCT005',3,1,11,2);
+INSERT INTO phieu_muon_chi_tiet(ma_phieu_muon_chi_tiet, id_phieu_muon, id_dau_sach,id_tinh_trang, so_luong) VALUES('PMCT006',4,1,12,1);
+INSERT INTO phieu_muon_chi_tiet(ma_phieu_muon_chi_tiet, id_phieu_muon, id_dau_sach,id_tinh_trang, so_luong) VALUES('PMCT007',5,3,11,1);
+
+
+--- BẢNG PHIẾU TRẢ
+
+INSERT INTO phieu_tra(ma_phieu_tra, id_phieu_muon, id_nv,ngay_tra) VALUES('PT001',1,1,42684);
+INSERT INTO phieu_tra(ma_phieu_tra, id_phieu_muon, id_nv,ngay_tra) VALUES('PT002',4,2,42693);
+
+
+--- BẢNG PHIẾU TRẢ CHI TIẾT
+
+INSERT INTO phieu_tra_chi_tiet(ma_phieu_tra_chi_tiet, id_phieu_tra, id_dau_sach,so_luong, so_ngay_qua_han, id_tinh_trang,tien_phat) VALUES('PTCT001',1,1,1,0,14,0);
+INSERT INTO phieu_tra_chi_tiet(ma_phieu_tra_chi_tiet, id_phieu_tra, id_dau_sach,so_luong, so_ngay_qua_han, id_tinh_trang,tien_phat) VALUES('PTCT002',1,2,2,0,14,0);
+INSERT INTO phieu_tra_chi_tiet(ma_phieu_tra_chi_tiet, id_phieu_tra, id_dau_sach,so_luong, so_ngay_qua_han, id_tinh_trang,tien_phat) VALUES('PTCT003',2,1,1,0,14,0);
 

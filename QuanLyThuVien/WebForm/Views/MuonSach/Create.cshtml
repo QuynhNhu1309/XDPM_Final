@@ -47,7 +47,7 @@
 
                                 <div class="col-md-8">
                                     <div class="form-group">
-                                        <p id="error"></p>
+                                       
                                         <label for="id_dau_sach">Chọn đầu sách</label>
                                         <select class="form-control input-sm" id="id_dau_sach" name="id_dau_sach">
                                             @foreach (var item in lst_dausach)
@@ -63,21 +63,18 @@
                                 <div class="col-md-1">
 
                                    
+                                    @foreach (var item in lst_dausach)
+                                    {
 
+                                        <input type="hidden" min="1" max="10" step="1" size="6" id="@item.id"
+                                               value="@item.so_luong_cuon_sach" class="form-control input-sm">
+
+
+                                    }
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group">
-                                       
-                                             @foreach (var item in lst_dausach)
-                                            {
-                                              
-                                                <input type="number" min="1" max="10" step="1" size="6" id="@item.id"
-                                                 value="@item.so_luong_cuon_sach" class="form-control input-sm">
-                                               
-
-                                            }
-
                                         <label for="so_luong">Số lượng </label>
                                         <input type="NUMBER" min="1" max="20" step="1" size="100" id="so_luong"
                                                value="1" class="form-control input-sm" name="so_luong">
@@ -138,12 +135,12 @@
                     
                  <div class="row">
 
-                     <input type="text" name="id_doc_gia" id="id_doc_gia" value="@if (lst_docgia.Count() == 1)
+                     @*<input type="text" name="id_doc_gia" id="id_doc_gia" value="@if (lst_docgia.Count() == 1)
                                                           {
                                                              foreach (var item in lst_docgia)                                                       { @Html.DisplayFor(modelItem => item.id)}
-                                                          }" />
+                                                          }" />*@
 
-                        <input type="text" name="ma_doc_gia" value="@if(lst_docgia.Count() == 1)
+                     <input type="hidden" name="ma_doc_gia" id="id_doc_gia" value="@if(lst_docgia.Count() == 1)
                                                           {
                                                              @ViewBag.tim_doc_gia
                                                           }" />
@@ -168,10 +165,7 @@
                 foreach (var item in lst_docgia)
                 {
                     <div class="sidebar">
-                        @ViewBag.idpm
-                        @ViewBag.iddg
-                        @ViewBag.ngay_muon
-                        @ViewBag.tim_doc_gia
+                       
                         <h2>THÔNG TIN ĐỘC GIẢ</h2>
                         <br />
                         <img src="~/Images/avatar.jpg" alt="">
@@ -187,7 +181,7 @@
                                 <p>Điện thoại: @Html.DisplayFor(modelItem => item.dien_thoai)</p>
                                 <p>Ngày cấp thẻ: @Html.DisplayFor(modelItem => item.ngay_cap_the)</p>
                                 <p>Ngày hết hạn: @Html.DisplayFor(modelItem => item.ngay_het_han)</p>
-                                <a href="singlepost.html" class="more">Xem thêm</a>
+                                
                             </div>
                         </div>
                     </div>

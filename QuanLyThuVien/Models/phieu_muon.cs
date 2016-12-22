@@ -97,6 +97,36 @@ namespace Models
                 return res;
         }
 
+         public int Them_PhieuMuon(DateTime ngay_muon, string ma_doc_gia, int so_luong_muon, DateTime ngay_tra)
+         {
+             object[] parameters = 
+                {
+                    new SqlParameter("@ngay_muon", ngay_muon),
+                    new SqlParameter("@ma_doc_gia", ma_doc_gia),
+                    new SqlParameter("@so_luong_muon", so_luong_muon),
+                    new SqlParameter("@id_nv", 1),
+                    new SqlParameter("@id_tinh_trang", 11),
+                    new SqlParameter("@ngay_tra", ngay_tra),
+               
+                  };
+             int res = context.Database.ExecuteSqlCommand("Them_PhieuMuon @ma_doc_gia, @so_luong_muon, @ngay_muon, @ngay_tra, @id_nv, @id_tinh_trang ", parameters);
+             return res;
+         }
+
+         public int Them_PhieuMuon_ChiTiet(int so_luong_muon, int id_dau_sach)
+         {
+             object[] parameters = 
+                {
+                    new SqlParameter("@so_luong_muon", so_luong_muon),
+                    new SqlParameter("@id_tinh_trang", 15),
+                    new SqlParameter("@id_dau_sach", id_dau_sach),
+               
+                  };
+             int res = context.Database.ExecuteSqlCommand("Them_PhieuMuonChiTiet @so_luong_muon, @id_tinh_trang, @id_dau_sach ", parameters);
+             return res;
+         }
+
+
         public int Get_Id_Latest(int id_doc_gia)
         {
              //object[] parameters = 

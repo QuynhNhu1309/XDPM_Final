@@ -9,66 +9,119 @@
 <div id="body">
     <div class="header">
         <div>
-            <h1>CHI TIẾT PHIẾU MƯỢN</h1>
+            <h1>CHI TIẾT PHIẾU MƯỢN @foreach (var item in Model)
+                            {@Html.DisplayFor(modelItem => item.phieu_muon.ma_phieu_muon) break;
+                            } </h1>
         </div>
     </div>
     <div class="blog">
 
-        <div class="row">
-            <div class="col-md-11">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>MÃ PHIẾU MƯỢN</th>
-                            <th>MÃ PHIẾU MƯỢN CHI TIẾT</th>
-                            <th>MÃ CUỐN SÁCH </th>
-                            <th>SỐ LƯỢNG</th>
-                            <th>TÌNH TRẠNG</th>
-                            
-                        </tr>
-                    </thead>
-                 
+        <div class="row" >
+            <div class="col-md-3"></div>
+            <div class="col-md-6" style="border:2px solid black;">
+                @foreach (var item in Model)
+                {
+                    <div class="row">
+                        <div class="col-md-5"><h5>MÃ THẺ THƯ VIỆN :</h5></div>
+                        <div class="col-md-7"><h5>@Html.DisplayFor(modelItem => item.phieu_muon.doc_gia.ma_the_thu_vien)</h5></div>
 
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5"><h5>ĐỘC GIẢ :</h5></div>
+                        <div class="col-md-7"><h5>@Html.DisplayFor(modelItem => item.phieu_muon.doc_gia.ho_ten)</h5></div>
+                    </div>
+                        <div class="row">
+                        <div class="col-md-5"><h5>NGÀY MƯỢN:</h5></div>
+                        <div class="col-md-7"><h5>@Html.DisplayFor(modelItem => item.phieu_muon.ngay_muon)</h5></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5"><h5>NGÀY TRẢ:</h5></div>
+                        <div class="col-md-7"><h5>@Html.DisplayFor(modelItem => item.phieu_muon.ngay_tra)</h5></div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-5"><h5>TÌNH TRẠNG:</h5></div>
+                        <div class="col-md-7"><h5>@Html.DisplayFor(modelItem => item.phieu_muon.trang_thai.ten_trang_thai)</h5></div>
 
-                    <tbody>
-                        @{
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5"><h5>MÃ NHÂN VIÊN:</h5></div>
+                        <div class="col-md-7"><h5>@Html.DisplayFor(modelItem => item.phieu_muon.nhan_vien.ma_nhan_vien)</h5></div>
 
-                            var count = 0;
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-5"><h5>TÊN NHÂN VIÊN:</h5></div>
+                        <div class="col-md-7"><h5>@Html.DisplayFor(modelItem => item.phieu_muon.nhan_vien.ho_ten)</h5></div>
 
-                            foreach (var item in Model)
-                            {
+                    </div>
+                    
+                    break;
+                }
+            </div>
+            <div class="col-md-3"></div>
 
-                                count = count + 1;
-                                <tr>
-                                    <td>@count</td>
-                                    <td>@Html.DisplayFor(modelItem => item.phieu_muon.ma_phieu_muon)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.ma_phieu_muon_chi_tiet)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.cuon_sach.ma_cuon_sach)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.so_luong)</td>
-                                    
-                                    <td>@Html.DisplayFor(modelItem => item.trang_thai.ten_trang_thai)</td>
-                                    
+        </div>
+        <br />
+
+            <div class="row">
+                <div class="col-md-11">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>MÃ PHIẾU MƯỢN CHI TIẾT</th>
+                                <th>TÊN SÁCH </th>
+                                <th>SỐ LƯỢNG</th>
+                                <th>TÌNH TRẠNG</th>
 
                             </tr>
+                        </thead>
+
+
+
+                        <tbody>
+                            @{
+
+                                var count = 0;
+
+                                foreach (var item in Model)
+                                {
+
+                                    count = count + 1;
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ma_phieu_muon_chi_tiet)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.dau_sach.ten_dau_sach)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.so_luong)</td>
+
+                                        <td>@Html.DisplayFor(modelItem => item.trang_thai.ten_trang_thai)</td>
+
+
+                                    </tr>
+                                }
+
                             }
 
-                        }
 
 
 
 
 
+                        </tbody>
+                    </table>
+                </div>
 
-                    </tbody>
-                </table>
+                <div class="col-md-1"></div>
+                <div class="col-md-5"></div>
+                <div class="col-md-2"><center>@Html.ActionLink("QUAY VỀ", "Index", "MuonSach",
+                                        new { @class = "btn btn-primary" })</center></div>
+
             </div>
-
-            <div class="col-md-1"></div>
-           
         </div>
-    </div>
     <!--       row    -->
+
+    
 
 
 

@@ -53,9 +53,9 @@
     <Compile Include="dau_sach.cs" />
     <Compile Include="doc_gia.cs" />
     <Compile Include="loai_sach.cs" />
-    <Compile Include="Migrations\201612211130231_Initial.cs" />
-    <Compile Include="Migrations\201612211130231_Initial.Designer.cs">
-      <DependentUpon>201612211130231_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201612220132115_Initial.cs" />
+    <Compile Include="Migrations\201612220132115_Initial.Designer.cs">
+      <DependentUpon>201612220132115_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="nhan_vien.cs" />
@@ -77,8 +77,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201612211130231_Initial.resx">
-      <DependentUpon>201612211130231_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612220132115_Initial.resx">
+      <DependentUpon>201612220132115_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

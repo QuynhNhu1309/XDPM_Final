@@ -70,6 +70,8 @@ namespace Models
 
         public virtual ICollection<phieu_nhap_chi_tiet> phieu_nhap_chi_tiet { get; set; }
 
+        public virtual ICollection<phieu_tra_chi_tiet> phieu_tra_chi_tiet { get; set; }
+
         QuanLyThuVienDB db = new QuanLyThuVienDB();
         public List<dau_sach> ListAll()
         {

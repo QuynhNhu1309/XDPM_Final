@@ -19,12 +19,12 @@ namespace Models
             id = obj.id;
             ma_phieu_muon_chi_tiet = obj.ma_phieu_muon_chi_tiet;
             id_phieu_muon = obj.id_phieu_muon;
-            id_cuon_sach = obj.id_cuon_sach;
+            //id_cuon_sach = obj.id_cuon_sach;
             id_dau_sach = obj.id_dau_sach;
             //ngay_tra = obj.ngay_tra;
             id_tinh_trang = obj.id_tinh_trang;
             so_luong = obj.so_luong;
-            cuon_sach = obj.cuon_sach;
+            //cuon_sach = obj.cuon_sach;
             dau_sach = obj.dau_sach;
             phieu_muon = obj.phieu_muon;
             trang_thai = obj.trang_thai;
@@ -38,14 +38,14 @@ namespace Models
 
         public int id_dau_sach { get; set; }
 
-        public int id_cuon_sach { get; set; }
+        //public int id_cuon_sach { get; set; }
 
         public int id_tinh_trang { get; set; }
 
         public int so_luong { get; set; }
 
-        [ForeignKey("id_cuon_sach")]
-        public virtual cuon_sach cuon_sach { get; set; }
+        //[ForeignKey("id_cuon_sach")]
+        //public virtual cuon_sach cuon_sach { get; set; }
 
         [ForeignKey("id_dau_sach")]
         public virtual dau_sach dau_sach { get; set; }

@@ -82,13 +82,13 @@
                                             <td>@Html.DisplayFor(modelItem => item.doc_gia.ma_the_thu_vien)</td>
                                             <td>@Html.DisplayFor(modelItem => item.ngay_muon)</td>
                                             <td>@Html.DisplayFor(modelItem => item.ngay_tra)</td>
-                                            <td>
-                                                @if (item.id_tinh_trang == 10)
+                                            <td>@Html.DisplayFor(modelItem => item.trang_thai.ten_trang_thai)
+                                                @*@if (item.id_tinh_trang == 10)
                                                 { @Html.Raw("Chưa trả");
                                                 }
                                                 else if ((item.id_tinh_trang == 11))
                                                 { @Html.Raw("Đã trả");
-                                                }
+                                                }*@
 
                                         </td>
                                         <td>@Html.DisplayFor(modelItem => item.nhan_vien.ho_ten)</td>

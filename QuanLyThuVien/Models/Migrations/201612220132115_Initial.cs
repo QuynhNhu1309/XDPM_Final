@@ -7,6 +7,7 @@ namespace Models.Migrations
     {
         public override void Up()
         {
+
             CreateTable(
                 "dbo.cuon_sach",
                 c => new
@@ -186,18 +187,15 @@ namespace Models.Migrations
                         ma_phieu_muon_chi_tiet = c.String(),
                         id_phieu_muon = c.Int(nullable: false),
                         id_dau_sach = c.Int(nullable: false),
-                        id_cuon_sach = c.Int(nullable: false),
                         id_tinh_trang = c.Int(nullable: false),
                         so_luong = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.id)
-                .ForeignKey("dbo.cuon_sach", t => t.id_cuon_sach, cascadeDelete: true)
-                .ForeignKey("dbo.dau_sach", t => t.id_dau_sach, cascadeDelete: false)
-                .ForeignKey("dbo.phieu_muon", t => t.id_phieu_muon, cascadeDelete: false)
+                .ForeignKey("dbo.dau_sach", t => t.id_dau_sach, cascadeDelete: true)
+                .ForeignKey("dbo.phieu_muon", t => t.id_phieu_muon, cascadeDelete: true)
                 .ForeignKey("dbo.trang_thai", t => t.id_tinh_trang, cascadeDelete: false)
                 .Index(t => t.id_phieu_muon)
                 .Index(t => t.id_dau_sach)
-                .Index(t => t.id_cuon_sach)
                 .Index(t => t.id_tinh_trang);
             
             CreateTable(
@@ -207,18 +205,18 @@ namespace Models.Migrations
                         id = c.Int(nullable: false, identity: true),
                         ma_phieu_tra_chi_tiet = c.String(),
                         id_phieu_tra = c.Int(nullable: false),
-                        id_cuon_sach = c.Int(nullable: false),
+                        id_dau_sach = c.Int(nullable: false),
                         so_luong = c.Int(nullable: false),
                         so_ngay_qua_han = c.Int(nullable: false),
                         id_tinh_trang = c.Int(nullable: false),
                         tien_phat = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.id)
-                .ForeignKey("dbo.cuon_sach", t => t.id_cuon_sach, cascadeDelete: true)
+                .ForeignKey("dbo.dau_sach", t => t.id_dau_sach, cascadeDelete: true)
                 .ForeignKey("dbo.phieu_tra", t => t.id_phieu_tra, cascadeDelete: true)
-                .ForeignKey("dbo.trang_thai", t => t.id_tinh_trang, cascadeDelete: false)
+                .ForeignKey("dbo.trang_thai", t => t.id_tinh_trang, cascadeDelete: true)
                 .Index(t => t.id_phieu_tra)
-                .Index(t => t.id_cuon_sach)
+                .Index(t => t.id_dau_sach)
                 .Index(t => t.id_tinh_trang);
             
             CreateTable(
@@ -261,11 +259,10 @@ namespace Models.Migrations
             DropForeignKey("dbo.phieu_tra_chi_tiet", "id_phieu_tra", "dbo.phieu_tra");
             DropForeignKey("dbo.phieu_tra", "id_phieu_muon", "dbo.phieu_muon");
             DropForeignKey("dbo.phieu_tra", "id_nv", "dbo.nhan_vien");
-            DropForeignKey("dbo.phieu_tra_chi_tiet", "id_cuon_sach", "dbo.cuon_sach");
+            DropForeignKey("dbo.phieu_tra_chi_tiet", "id_dau_sach", "dbo.dau_sach");
             DropForeignKey("dbo.phieu_muon_chi_tiet", "id_tinh_trang", "dbo.trang_thai");
             DropForeignKey("dbo.phieu_muon_chi_tiet", "id_phieu_muon", "dbo.phieu_muon");
             DropForeignKey("dbo.phieu_muon_chi_tiet", "id_dau_sach", "dbo.dau_sach");
-            DropForeignKey("dbo.phieu_muon_chi_tiet", "id_cuon_sach", "dbo.cuon_sach");
             DropForeignKey("dbo.phieu_muon", "id_tinh_trang", "dbo.trang_thai");
             DropForeignKey("dbo.nhan_vien", "id_tinh_trang", "dbo.trang_thai");
             DropForeignKey("dbo.doc_gia", "id_tinh_trang", "dbo.trang_thai");
@@ -280,10 +277,9 @@ namespace Models.Migrations
             DropIndex("dbo.phieu_tra", new[] { "id_nv" });
             DropIndex("dbo.phieu_tra", new[] { "id_phieu_muon" });
             DropIndex("dbo.phieu_tra_chi_tiet", new[] { "id_tinh_trang" });
-            DropIndex("dbo.phieu_tra_chi_tiet", new[] { "id_cuon_sach" });
+            DropIndex("dbo.phieu_tra_chi_tiet", new[] { "id_dau_sach" });
             DropIndex("dbo.phieu_tra_chi_tiet", new[] { "id_phieu_tra" });
             DropIndex("dbo.phieu_muon_chi_tiet", new[] { "id_tinh_trang" });
-            DropIndex("dbo.phieu_muon_chi_tiet", new[] { "id_cuon_sach" });
             DropIndex("dbo.phieu_muon_chi_tiet", new[] { "id_dau_sach" });
             DropIndex("dbo.phieu_muon_chi_tiet", new[] { "id_phieu_muon" });
             DropIndex("dbo.doc_gia", new[] { "id_tinh_trang" });
