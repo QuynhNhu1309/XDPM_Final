@@ -21,7 +21,7 @@ namespace WinForm
         public int current_page_Index = 0;
         public int number_page = 1;
         public int total_dau_sach = 1;
-        public int number_record = 2;
+        public int number_record = 10;
        
         public DauSach()
         {
@@ -146,20 +146,24 @@ namespace WinForm
             //var bindinglist = new BindingList<dau_sach>(db.dau_sach.ToList().Select(w => new w.ma_dau_sach).ToList());
             //var source = new BindingSource(bindinglist, null);
             //dtgv_dau_sach.DataSource = source;
-            dtgv_dau_sach.Columns[0].HeaderText = "Mã đầu sách";
-            dtgv_dau_sach.Columns[0].Visible = false;
+            dtgv_dau_sach.Columns[0].HeaderText = "STT";
+            dtgv_dau_sach.Columns[0].Visible = true;
+            dtgv_dau_sach.Columns[0].Width = 40;
 
             dtgv_dau_sach.Columns[1].HeaderText = "Mã đầu sách";
             dtgv_dau_sach.Columns[1].Visible = true;
+            dtgv_dau_sach.Columns[1].Width = 100;
 
             dtgv_dau_sach.Columns[2].HeaderText = "Tên đầu sách";
             dtgv_dau_sach.Columns[2].Visible = true;
+            dtgv_dau_sach.Columns[2].Width = 140;
 
             dtgv_dau_sach.Columns[3].HeaderText = "ID loại sách";
             dtgv_dau_sach.Columns[3].Visible = false;
 
             dtgv_dau_sach.Columns[4].HeaderText = "Tên loại sách";
             dtgv_dau_sach.Columns[4].Visible = true;
+            dtgv_dau_sach.Columns[4].Width = 120;
 
             dtgv_dau_sach.Columns[5].HeaderText = "Tóm tắt";
             dtgv_dau_sach.Columns[5].Visible = false;
@@ -169,24 +173,30 @@ namespace WinForm
 
             dtgv_dau_sach.Columns[7].HeaderText = "Nhà xuất bản";
             dtgv_dau_sach.Columns[7].Visible = true;
+            dtgv_dau_sach.Columns[7].Width = 120;
 
             dtgv_dau_sach.Columns[8].HeaderText = "Số lượng cuốn sách";
             dtgv_dau_sach.Columns[8].Visible = true;
+            dtgv_dau_sach.Columns[8].Width = 150;
 
             dtgv_dau_sach.Columns[9].HeaderText = "Năm xuất bản";
             dtgv_dau_sach.Columns[9].Visible = true;
+            dtgv_dau_sach.Columns[9].Width = 120;
 
             dtgv_dau_sach.Columns[10].HeaderText = "ID tác giả";
             dtgv_dau_sach.Columns[10].Visible = false;
 
+
             dtgv_dau_sach.Columns[11].HeaderText = "Tác giả";
             dtgv_dau_sach.Columns[11].Visible = true;
+            dtgv_dau_sach.Columns[11].Width = 140;
 
             dtgv_dau_sach.Columns[12].HeaderText = "ID tình trạng";
             dtgv_dau_sach.Columns[12].Visible = false;
 
             dtgv_dau_sach.Columns[13].HeaderText = "Tình trạng";
             dtgv_dau_sach.Columns[13].Visible = true;
+            dtgv_dau_sach.Columns[13].Width = 110;
             //datagvDauSach.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
@@ -225,7 +235,7 @@ namespace WinForm
                  db.SaveChanges();
                  this.Visible = false;
                  MessageBox.Show("Xóa thành công");
-                 Refresh_Form(3, current_page_Index);
+                 Refresh_Form(10, current_page_Index);
                  DauSach frm = new DauSach();
                  frm.Show();
                  
@@ -245,6 +255,7 @@ namespace WinForm
             Int32 selectedRowCount = dtgv_dau_sach.Rows.GetRowCount(DataGridViewElementStates.Selected);
             if (selectedRowCount == 1)
             {
+
                 //Lấy id chuyển qua form sửa
                 Int32 id = int.Parse(this.dtgv_dau_sach.CurrentRow.Cells[0].Value.ToString());
                 DauSach_Sua frm = new DauSach_Sua(id, current_page_Index);
@@ -373,15 +384,17 @@ namespace WinForm
         //Thêm số lượng cuốn sách
         private void btn_them_cuon_sach_Click(object sender, EventArgs e)
         {
-            
-            Int32 selectedRowCount =
-                    dtgv_dau_sach.Rows.GetRowCount(DataGridViewElementStates.Selected);
-            if (selectedRowCount == 1)
-            {
-                Int32 id_current = int.Parse(this.dtgv_dau_sach.CurrentRow.Cells[0].Value.ToString());
-                DauSach_Them_SL_CuonSach frm = new DauSach_Them_SL_CuonSach(id_current);
-                frm.Show();
-            }  
+            this.Hide();
+            DauSachNhap frm = new DauSachNhap();
+            frm.Show();
+            //Int32 selectedRowCount =
+            //        dtgv_dau_sach.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            //if (selectedRowCount == 1)
+            //{
+            //    Int32 id_current = int.Parse(this.dtgv_dau_sach.CurrentRow.Cells[0].Value.ToString());
+            //    DauSach_Them_SL_CuonSach frm = new DauSach_Them_SL_CuonSach(id_current);
+            //    frm.Show();
+            //}  
         }
 
 
@@ -432,6 +445,13 @@ namespace WinForm
                 current_page_Index = 0;
                 Refresh_Form(number_record, current_page_Index);
             
+        }
+
+
+        //Đóng form quản lý sách
+        private void btn_dausach_dong_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

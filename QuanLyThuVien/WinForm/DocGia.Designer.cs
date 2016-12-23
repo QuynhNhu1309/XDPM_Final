@@ -36,23 +36,25 @@
             this.btn_next = new System.Windows.Forms.Button();
             this.btn_next_end = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btn_dong_ds_doc_gia = new System.Windows.Forms.Button();
+            this.btn_docgia_them = new System.Windows.Forms.Button();
+            this.btn_docgia_sua = new System.Windows.Forms.Button();
+            this.btn_docgia_dong = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_docgia)).BeginInit();
             this.SuspendLayout();
             // 
             // dtgv_docgia
             // 
             this.dtgv_docgia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgv_docgia.Location = new System.Drawing.Point(21, 90);
+            this.dtgv_docgia.Location = new System.Drawing.Point(89, 140);
             this.dtgv_docgia.Name = "dtgv_docgia";
-            this.dtgv_docgia.Size = new System.Drawing.Size(776, 215);
+            this.dtgv_docgia.Size = new System.Drawing.Size(887, 309);
             this.dtgv_docgia.TabIndex = 0;
             // 
             // lbl_ds_docgia
             // 
             this.lbl_ds_docgia.AutoSize = true;
             this.lbl_ds_docgia.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_ds_docgia.Location = new System.Drawing.Point(159, 31);
+            this.lbl_ds_docgia.Location = new System.Drawing.Point(410, 43);
             this.lbl_ds_docgia.Name = "lbl_ds_docgia";
             this.lbl_ds_docgia.Size = new System.Drawing.Size(297, 31);
             this.lbl_ds_docgia.TabIndex = 12;
@@ -62,19 +64,18 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.comboBox1.Location = new System.Drawing.Point(514, 39);
+            "5",
+            "10",
+            "15"});
+            this.comboBox1.Location = new System.Drawing.Point(750, 100);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.Size = new System.Drawing.Size(54, 21);
             this.comboBox1.TabIndex = 17;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // btn_back_e
             // 
-            this.btn_back_e.Location = new System.Drawing.Point(650, 39);
+            this.btn_back_e.Location = new System.Drawing.Point(819, 100);
             this.btn_back_e.Name = "btn_back_e";
             this.btn_back_e.Size = new System.Drawing.Size(32, 23);
             this.btn_back_e.TabIndex = 16;
@@ -84,7 +85,7 @@
             // 
             // btn_back
             // 
-            this.btn_back.Location = new System.Drawing.Point(688, 39);
+            this.btn_back.Location = new System.Drawing.Point(857, 100);
             this.btn_back.Name = "btn_back";
             this.btn_back.Size = new System.Drawing.Size(32, 23);
             this.btn_back.TabIndex = 15;
@@ -94,7 +95,7 @@
             // 
             // btn_next
             // 
-            this.btn_next.Location = new System.Drawing.Point(726, 39);
+            this.btn_next.Location = new System.Drawing.Point(895, 100);
             this.btn_next.Name = "btn_next";
             this.btn_next.Size = new System.Drawing.Size(32, 23);
             this.btn_next.TabIndex = 14;
@@ -104,7 +105,7 @@
             // 
             // btn_next_end
             // 
-            this.btn_next_end.Location = new System.Drawing.Point(764, 39);
+            this.btn_next_end.Location = new System.Drawing.Point(933, 100);
             this.btn_next_end.Name = "btn_next_end";
             this.btn_next_end.Size = new System.Drawing.Size(32, 23);
             this.btn_next_end.TabIndex = 13;
@@ -114,7 +115,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(328, 332);
+            this.button1.Location = new System.Drawing.Point(406, 502);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(98, 32);
             this.button1.TabIndex = 18;
@@ -122,22 +123,44 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btn_dong_ds_doc_gia
+            // btn_docgia_them
             // 
-            this.btn_dong_ds_doc_gia.Location = new System.Drawing.Point(453, 332);
-            this.btn_dong_ds_doc_gia.Name = "btn_dong_ds_doc_gia";
-            this.btn_dong_ds_doc_gia.Size = new System.Drawing.Size(98, 32);
-            this.btn_dong_ds_doc_gia.TabIndex = 18;
-            this.btn_dong_ds_doc_gia.Text = "ĐÓNG";
-            this.btn_dong_ds_doc_gia.UseVisualStyleBackColor = true;
-            this.btn_dong_ds_doc_gia.Click += new System.EventHandler(this.button1_Click);
+            this.btn_docgia_them.Location = new System.Drawing.Point(279, 502);
+            this.btn_docgia_them.Name = "btn_docgia_them";
+            this.btn_docgia_them.Size = new System.Drawing.Size(98, 32);
+            this.btn_docgia_them.TabIndex = 19;
+            this.btn_docgia_them.Text = "THÊM";
+            this.btn_docgia_them.UseVisualStyleBackColor = true;
+            this.btn_docgia_them.Click += new System.EventHandler(this.btn_docgia_them_Click);
+            // 
+            // btn_docgia_sua
+            // 
+            this.btn_docgia_sua.Location = new System.Drawing.Point(524, 502);
+            this.btn_docgia_sua.Name = "btn_docgia_sua";
+            this.btn_docgia_sua.Size = new System.Drawing.Size(103, 32);
+            this.btn_docgia_sua.TabIndex = 20;
+            this.btn_docgia_sua.Text = "SỬA";
+            this.btn_docgia_sua.UseVisualStyleBackColor = true;
+            this.btn_docgia_sua.Click += new System.EventHandler(this.btn_docgia_sua_Click);
+            // 
+            // btn_docgia_dong
+            // 
+            this.btn_docgia_dong.Location = new System.Drawing.Point(654, 502);
+            this.btn_docgia_dong.Name = "btn_docgia_dong";
+            this.btn_docgia_dong.Size = new System.Drawing.Size(103, 33);
+            this.btn_docgia_dong.TabIndex = 21;
+            this.btn_docgia_dong.Text = "ĐÓNG";
+            this.btn_docgia_dong.UseVisualStyleBackColor = true;
+            this.btn_docgia_dong.Click += new System.EventHandler(this.btn_docgia_dong_Click);
             // 
             // DocGia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(839, 448);
-            this.Controls.Add(this.btn_dong_ds_doc_gia);
+            this.ClientSize = new System.Drawing.Size(1079, 570);
+            this.Controls.Add(this.btn_docgia_dong);
+            this.Controls.Add(this.btn_docgia_sua);
+            this.Controls.Add(this.btn_docgia_them);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btn_back_e);
@@ -165,6 +188,8 @@
         private System.Windows.Forms.Button btn_next;
         private System.Windows.Forms.Button btn_next_end;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btn_dong_ds_doc_gia;
+        private System.Windows.Forms.Button btn_docgia_them;
+        private System.Windows.Forms.Button btn_docgia_sua;
+        private System.Windows.Forms.Button btn_docgia_dong;
     }
 }

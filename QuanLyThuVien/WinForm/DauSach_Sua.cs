@@ -85,6 +85,8 @@ namespace WinForm
 
         private void btn_sua_dau_sach_Click(object sender, EventArgs e)
         {
+            try
+            {
             dau_sach obj = db.dau_sach.Find(dau_sach_ins.id);
             obj.ten_dau_sach = ten_dau_sach_sua.Text.Trim();
             obj.id_loai_sach = int.Parse(loai_sach_sua.SelectedValue.ToString());
@@ -103,15 +105,17 @@ namespace WinForm
 
             db.SaveChanges();
             //var list = db.Products.ToList().Select(i => new Product2(i)).ToList();
-
-
-
-
-
+            MessageBox.Show("Sửa thông tin thành công");
             this.Visible = false;
             DauSach frm = new DauSach();
             frm.Refresh_Form(3, current_page_Index);
             frm.Show();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sửa độc giả không thành công. Vui lòng kiểm tra lại thông tin độc giả");
+            }
             
             //frm.Refresh_dtgv(List<Product2> list);
             
@@ -121,7 +125,14 @@ namespace WinForm
         private void btn_huy_sua_dau_sach_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+            DauSach frm = new DauSach();
+            frm.Show();
           
+        }
+
+        private void DauSach_Sua_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

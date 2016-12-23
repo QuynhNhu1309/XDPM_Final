@@ -43,14 +43,14 @@
             // dtgrv_phieu_nhap
             // 
             this.dtgrv_phieu_nhap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgrv_phieu_nhap.Location = new System.Drawing.Point(12, 115);
+            this.dtgrv_phieu_nhap.Location = new System.Drawing.Point(109, 116);
             this.dtgrv_phieu_nhap.Name = "dtgrv_phieu_nhap";
-            this.dtgrv_phieu_nhap.Size = new System.Drawing.Size(854, 214);
+            this.dtgrv_phieu_nhap.Size = new System.Drawing.Size(854, 258);
             this.dtgrv_phieu_nhap.TabIndex = 0;
             // 
             // btn_next_end
             // 
-            this.btn_next_end.Location = new System.Drawing.Point(834, 46);
+            this.btn_next_end.Location = new System.Drawing.Point(926, 73);
             this.btn_next_end.Name = "btn_next_end";
             this.btn_next_end.Size = new System.Drawing.Size(32, 23);
             this.btn_next_end.TabIndex = 6;
@@ -60,7 +60,7 @@
             // 
             // btn_next
             // 
-            this.btn_next.Location = new System.Drawing.Point(796, 46);
+            this.btn_next.Location = new System.Drawing.Point(888, 73);
             this.btn_next.Name = "btn_next";
             this.btn_next.Size = new System.Drawing.Size(32, 23);
             this.btn_next.TabIndex = 7;
@@ -70,7 +70,7 @@
             // 
             // btn_back
             // 
-            this.btn_back.Location = new System.Drawing.Point(758, 46);
+            this.btn_back.Location = new System.Drawing.Point(850, 73);
             this.btn_back.Name = "btn_back";
             this.btn_back.Size = new System.Drawing.Size(32, 23);
             this.btn_back.TabIndex = 8;
@@ -80,7 +80,7 @@
             // 
             // btn_back_e
             // 
-            this.btn_back_e.Location = new System.Drawing.Point(720, 46);
+            this.btn_back_e.Location = new System.Drawing.Point(812, 73);
             this.btn_back_e.Name = "btn_back_e";
             this.btn_back_e.Size = new System.Drawing.Size(32, 23);
             this.btn_back_e.TabIndex = 9;
@@ -92,11 +92,10 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.comboBox1.Location = new System.Drawing.Point(584, 46);
+            "5",
+            "10",
+            "15"});
+            this.comboBox1.Location = new System.Drawing.Point(676, 73);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 10;
@@ -104,7 +103,7 @@
             // 
             // btn_xem
             // 
-            this.btn_xem.Location = new System.Drawing.Point(413, 351);
+            this.btn_xem.Location = new System.Drawing.Point(700, 424);
             this.btn_xem.Name = "btn_xem";
             this.btn_xem.Size = new System.Drawing.Size(85, 32);
             this.btn_xem.TabIndex = 11;
@@ -114,7 +113,7 @@
             // 
             // btn_xem_phieu_nhap
             // 
-            this.btn_xem_phieu_nhap.Location = new System.Drawing.Point(251, 351);
+            this.btn_xem_phieu_nhap.Location = new System.Drawing.Point(538, 424);
             this.btn_xem_phieu_nhap.Name = "btn_xem_phieu_nhap";
             this.btn_xem_phieu_nhap.Size = new System.Drawing.Size(129, 32);
             this.btn_xem_phieu_nhap.TabIndex = 11;
@@ -126,17 +125,18 @@
             // 
             this.lbl_ds_phieunhap.AutoSize = true;
             this.lbl_ds_phieunhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_ds_phieunhap.Location = new System.Drawing.Point(145, 34);
+            this.lbl_ds_phieunhap.Location = new System.Drawing.Point(297, 31);
             this.lbl_ds_phieunhap.Name = "lbl_ds_phieunhap";
             this.lbl_ds_phieunhap.Size = new System.Drawing.Size(349, 31);
             this.lbl_ds_phieunhap.TabIndex = 31;
             this.lbl_ds_phieunhap.Text = "DANH SÁCH PHIẾU NHẬP";
+            this.lbl_ds_phieunhap.Click += new System.EventHandler(this.lbl_ds_phieunhap_Click);
             // 
             // PhieuNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 408);
+            this.ClientSize = new System.Drawing.Size(1077, 518);
             this.Controls.Add(this.lbl_ds_phieunhap);
             this.Controls.Add(this.btn_xem_phieu_nhap);
             this.Controls.Add(this.btn_xem);

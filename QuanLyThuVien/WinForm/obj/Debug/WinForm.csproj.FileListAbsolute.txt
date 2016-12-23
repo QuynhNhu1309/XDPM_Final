@@ -47,3 +47,7 @@ D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\WinForm\obj\Debug\WinForm.Phi
 D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\WinForm\obj\Debug\WinForm.PhieuNhapChiTiet.resources
 D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\WinForm\obj\Debug\WinForm.DocGia.resources
 D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\WinForm\obj\Debug\WinForm.DocGiaChiTiet.resources
+D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\WinForm\obj\Debug\WinForm.DocGiaThem.resources
+D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\WinForm\obj\Debug\WinForm.DocGia_Sua.resources
+D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\WinForm\obj\Debug\WinForm.DauSachNhap.resources
+D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\WinForm\obj\Debug\WinForm.DauSachNhap_Exist.resources

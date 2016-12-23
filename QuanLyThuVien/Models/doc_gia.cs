@@ -99,6 +99,14 @@ namespace Models
             return rs;
         }
 
+        public Array Get_Latest_id_docgia()
+        {
+            string[] arr = new string[2];
+            arr[1] = context.Database.SqlQuery<string>(
+                        "Get_ID_Ma_DocGia @id_doc_gia").Single();
+            return arr;
+        }
+
 
         
     }

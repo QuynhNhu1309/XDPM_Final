@@ -369,4 +369,166 @@ SET NOCOUNT ON;
 		
 		
 EXEC Them_PhieuMuonChiTiet 2, 15, 4
+
+
+
+------ THÊM PHIẾU NHẬP VÀ PHIẾU NHẬP CHI TIẾT KHI THÊM ĐẦU SÁCH ----
+  IF OBJECT_ID('Them_PhieuNhap') IS NOT NULL
+DROP PROCEDURE Them_PhieuNhap;
+GO
+CREATE PROC Them_PhieuNhap
+	@thanhtien float,
+	@id_nha_xuat_ban int,
+	@gia_nhap float,
+	@so_luong_nhap int
+
+AS
+SET NOCOUNT ON;
+SET NOCOUNT ON;
+	declare @id_PM int;
+	declare @ma_phieu_muon varchar(100);
+	declare @id_phieu_nhap int;
+	declare @idpnct int;
+	declare @ma_pnct varchar(100);
+	declare @id_dau_sach int;
+	
+	if(not exists(select * from phieu_nhap))
+		begin
+		set @id_PM = 1;
+		set @ma_phieu_muon = 'PN00' + CAST(@id_PM as varchar(100));
+		select @ma_phieu_muon as ma_pm;
+		end
+	else
+		begin
+		set @ma_phieu_muon = (select MAX(ma_phieu_nhap) from phieu_nhap)
+		set @id_PM = cast(SUBSTRING(@ma_phieu_muon, 3 ,4) as int)
+		set @id_PM = @id_PM + 1;
 		
+			if(@id_PM < 10)
+				begin 
+				set @ma_phieu_muon = 'PN00' + CAST(@id_PM as varchar(100))
+				select @ma_phieu_muon as ma_pm;
+				end
+			else if(@id_PM < 100 and @id_PM >=  10)
+				begin 
+				set @ma_phieu_muon = 'PN0' + CAST(@id_PM as varchar(100));
+				select @ma_phieu_muon as ma_pm;
+				end
+
+			else if(@id_PM < 1000 and @id_PM >=  100)
+				begin 
+				set @ma_phieu_muon = 'PN' + CAST(@id_PM as varchar(100));
+				select @ma_phieu_muon as ma_pm;
+				end
+	end
+
+INSERT INTO phieu_nhap(ma_phieu_nhap, ngay_nhap, tongtien, id_tinh_trang, id_nhan_vien)
+ VALUES(@ma_phieu_muon, getdate(), @thanhtien, 1, 1)
+
+
+--- Tạo mã mới cho phiếu nhập chi tiết
+ if(not exists(select * from phieu_nhap_chi_tiet))
+		begin
+		set @idpnct = 1;
+		set @ma_pnct = 'PNCT00' + CAST(@idpnct as varchar(100));
+		select @ma_pnct as ma_pm1;
+		end
+	else
+		begin
+		set @ma_pnct = (select MAX(ma_phieu_nhap_chi_tiet) from phieu_nhap_chi_tiet)
+		set @idpnct = cast(SUBSTRING(@ma_pnct, 5 ,4) as int)
+		set @idpnct = @idpnct + 1;
+		
+			if(@idpnct < 10)
+				begin 
+				set @ma_pnct = 'PNCT00' + CAST(@idpnct as varchar(100))
+				select @ma_pnct as ma_pm2;
+				end
+			else if(@idpnct < 100 and @idpnct >=  10)
+				begin 
+				set @ma_pnct = 'PNCT0' + CAST(@idpnct as varchar(100));
+				select @ma_pnct as ma_pm3;
+				end
+
+			else if(@idpnct < 1000 and @idpnct >=  100)
+				begin 
+				set @ma_pnct = 'PNCT' + CAST(@idpnct as varchar(100));
+				select @ma_pnct as ma_pm4;
+				end
+	end
+
+ SET @id_phieu_nhap = (SELECT TOP(1) id FROM phieu_nhap ORDER BY id DESC)
+
+ -- Lấy id đầu sách mới được thêm
+  SET @id_dau_sach = (SELECT TOP(1) id FROM dau_sach ORDER BY id DESC)
+
+ INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, 
+ so_luong_nhap, thanh_tien, id_phieu_nhap)
+ VALUES(@ma_pnct, @id_nha_xuat_ban, @id_dau_sach, @gia_nhap, @so_luong_nhap, @thanhtien, @id_phieu_nhap)
+
+EXEC Them_PhieuNhap 2100000, 1, 10000, 21
+
+
+
+------ THÊM PHIẾU NHẬP CHI TIẾT KHI ĐÃ CÓ TỒN TẠI PHIẾU NHẬP TRƯỚC ĐÓ, KHI THÊM ĐẦU SÁCH ----
+  IF OBJECT_ID('Them_PhieuNhap_Exist') IS NOT NULL
+DROP PROCEDURE Them_PhieuNhap_Exist;
+GO
+CREATE PROC Them_PhieuNhap_Exist
+	@thanhtien float,
+	@id_nha_xuat_ban int,
+	@gia_nhap float,
+	@so_luong_nhap int
+
+AS
+SET NOCOUNT ON;
+SET NOCOUNT ON;
+	declare @tong_tien float;
+	declare @id_phieu_nhap int;
+	declare @idpnct int;
+	declare @ma_pnct varchar(100);
+	declare @id_dau_sach int;
+	
+
+--- Tạo mã mới cho phiếu nhập chi tiết
+ if(not exists(select * from phieu_nhap_chi_tiet))
+		begin
+		set @idpnct = 1;
+		set @ma_pnct = 'PNCT00' + CAST(@idpnct as varchar(100));
+		select @ma_pnct as ma_pm1;
+		end
+	else
+		begin
+		set @ma_pnct = (select MAX(ma_phieu_nhap_chi_tiet) from phieu_nhap_chi_tiet)
+		set @idpnct = cast(SUBSTRING(@ma_pnct, 5 ,4) as int)
+		set @idpnct = @idpnct + 1;
+		
+			if(@idpnct < 10)
+				begin 
+				set @ma_pnct = 'PNCT00' + CAST(@idpnct as varchar(100))
+				select @ma_pnct as ma_pm2;
+				end
+			else if(@idpnct < 100 and @idpnct >=  10)
+				begin 
+				set @ma_pnct = 'PNCT0' + CAST(@idpnct as varchar(100));
+				select @ma_pnct as ma_pm3;
+				end
+
+			else if(@idpnct < 1000 and @idpnct >=  100)
+				begin 
+				set @ma_pnct = 'PNCT' + CAST(@idpnct as varchar(100));
+				select @ma_pnct as ma_pm4;
+				end
+	end
+
+ SET @id_phieu_nhap = (SELECT TOP(1) id FROM phieu_nhap ORDER BY id DESC)
+ SET @tong_tien = (SELECT tongtien FROM phieu_nhap WHERE id = @id_phieu_nhap);
+ UPDATE phieu_nhap SET tongtien = @tong_tien + @thanhtien WHERE id = @id_phieu_nhap;
+ -- Lấy id đầu sách mới được thêm
+  SET @id_dau_sach = (SELECT TOP(1) id FROM dau_sach ORDER BY id DESC)
+
+ INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, 
+ so_luong_nhap, thanh_tien, id_phieu_nhap)
+ VALUES(@ma_pnct, @id_nha_xuat_ban, @id_dau_sach, @gia_nhap, @so_luong_nhap, @thanhtien, @id_phieu_nhap)
+
+EXEC Them_PhieuNhap_Exist 2100000, 1, 10000, 21

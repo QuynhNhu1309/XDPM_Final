@@ -67,6 +67,18 @@
     <Compile Include="DauSach.Designer.cs">
       <DependentUpon>DauSach.cs</DependentUpon>
     </Compile>
+    <Compile Include="DauSachNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DauSachNhap.Designer.cs">
+      <DependentUpon>DauSachNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DauSachNhap_Exist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DauSachNhap_Exist.Designer.cs">
+      <DependentUpon>DauSachNhap_Exist.cs</DependentUpon>
+    </Compile>
     <Compile Include="DauSach_Sua.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +109,18 @@
     <Compile Include="DocGiaChiTiet.Designer.cs">
       <DependentUpon>DocGiaChiTiet.cs</DependentUpon>
     </Compile>
+    <Compile Include="DocGiaThem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocGiaThem.Designer.cs">
+      <DependentUpon>DocGiaThem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DocGia_Sua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocGia_Sua.Designer.cs">
+      <DependentUpon>DocGia_Sua.cs</DependentUpon>
+    </Compile>
     <Compile Include="PhieuNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +144,12 @@
     <EmbeddedResource Include="DauSach.resx">
       <DependentUpon>DauSach.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DauSachNhap.resx">
+      <DependentUpon>DauSachNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DauSachNhap_Exist.resx">
+      <DependentUpon>DauSachNhap_Exist.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DauSach_Sua.resx">
       <DependentUpon>DauSach_Sua.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +164,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DocGiaChiTiet.resx">
       <DependentUpon>DocGiaChiTiet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocGiaThem.resx">
+      <DependentUpon>DocGiaThem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocGia_Sua.resx">
+      <DependentUpon>DocGia_Sua.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PhieuNhap.resx">
       <DependentUpon>PhieuNhap.cs</DependentUpon>

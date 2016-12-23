@@ -21,5 +21,10 @@ namespace WinForm
         {
 
         }
+
+        private void btn_dong_xem_dau_sach_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

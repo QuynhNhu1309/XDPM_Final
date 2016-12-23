@@ -19,7 +19,7 @@ namespace WinForm
         public int current_page_Index = 0;
         public int number_page = 1;
         public int total_dau_sach = 1;
-        public int number_record = 2;
+        public int number_record = 10;
        
         public PhieuNhap()
         {
@@ -125,20 +125,25 @@ namespace WinForm
             //var bindinglist = new BindingList<dau_sach>(db.dau_sach.ToList().Select(w => new w.ma_dau_sach).ToList());
             //var source = new BindingSource(bindinglist, null);
             //dtgv_dau_sach.DataSource = source;
-            dtgrv_phieu_nhap.Columns[0].HeaderText = "id";
-            dtgrv_phieu_nhap.Columns[0].Visible = false;
+            dtgrv_phieu_nhap.Columns[0].HeaderText = "STT";
+            dtgrv_phieu_nhap.Columns[0].Visible = true;
+            dtgrv_phieu_nhap.Columns[0].Width = 80;
 
             dtgrv_phieu_nhap.Columns[1].HeaderText = "Mã phiếu nhập";
             dtgrv_phieu_nhap.Columns[1].Visible = true;
+            dtgrv_phieu_nhap.Columns[1].Width = 180;
 
             dtgrv_phieu_nhap.Columns[2].HeaderText = "Ngày nhập";
             dtgrv_phieu_nhap.Columns[2].Visible = true;
+            dtgrv_phieu_nhap.Columns[2].Width = 180;
 
             dtgrv_phieu_nhap.Columns[3].HeaderText = "Tổng tiền";
             dtgrv_phieu_nhap.Columns[3].Visible = true;
+            dtgrv_phieu_nhap.Columns[3].Width = 180;
 
             dtgrv_phieu_nhap.Columns[4].HeaderText = "Tên nhân viên";
             dtgrv_phieu_nhap.Columns[4].Visible = true;
+            dtgrv_phieu_nhap.Columns[4].Width = 200;
         }
 
 
@@ -216,26 +221,33 @@ namespace WinForm
                 //var bindinglist = new BindingList<dau_sach>(db.dau_sach.ToList().Select(w => new w.ma_dau_sach).ToList());
                 //var source = new BindingSource(bindinglist, null);
                 //dtgv_dau_sach.DataSource = source;
-                frm.dtgv_phieunhapct.Columns[0].HeaderText = "id";
+                frm.dtgv_phieunhapct.Columns[0].HeaderText = "STT";
                 frm.dtgv_phieunhapct.Columns[0].Visible = false;
+                frm.dtgv_phieunhapct.Columns[0].Width = 80;
 
                 frm.dtgv_phieunhapct.Columns[1].HeaderText = "Mã phiếu nhập chi tiết";
                 frm.dtgv_phieunhapct.Columns[1].Visible = true;
+                frm.dtgv_phieunhapct.Columns[1].Width = 200;
 
                 frm.dtgv_phieunhapct.Columns[2].HeaderText = "Nhà xuất bản";
                 frm.dtgv_phieunhapct.Columns[2].Visible = true;
+                frm.dtgv_phieunhapct.Columns[2].Width = 160;
 
                 frm.dtgv_phieunhapct.Columns[3].HeaderText = "Tên đầu sách";
                 frm.dtgv_phieunhapct.Columns[3].Visible = true;
+                frm.dtgv_phieunhapct.Columns[3].Width = 160;
 
                 frm.dtgv_phieunhapct.Columns[4].HeaderText = "Giá nhập";
                 frm.dtgv_phieunhapct.Columns[4].Visible = true;
+                frm.dtgv_phieunhapct.Columns[4].Width = 140;
 
                 frm.dtgv_phieunhapct.Columns[5].HeaderText = "Số lượng nhập";
                 frm.dtgv_phieunhapct.Columns[5].Visible = true;
+                frm.dtgv_phieunhapct.Columns[5].Width = 100;
 
                 frm.dtgv_phieunhapct.Columns[6].HeaderText = "Thành tiền";
                 frm.dtgv_phieunhapct.Columns[6].Visible = true;
+                frm.dtgv_phieunhapct.Columns[6].Width = 100;
 
                 frm.dtgv_phieunhapct.Columns[7].HeaderText = "id phiếu nhập";
                 frm.dtgv_phieunhapct.Columns[7].Visible = false;
@@ -253,6 +265,11 @@ namespace WinForm
         private void btn_xem_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void lbl_ds_phieunhap_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

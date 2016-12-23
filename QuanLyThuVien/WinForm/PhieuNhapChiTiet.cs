@@ -21,5 +21,10 @@ namespace WinForm
         {
             this.Hide();
         }
+
+        private void PhieuNhapChiTiet_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
