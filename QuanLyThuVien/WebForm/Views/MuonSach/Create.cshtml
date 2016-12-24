@@ -16,10 +16,36 @@
     </div>
     <div class="blog">
         <div class="featured">
+            <div class="row">@if (TempData["Success"] != null)
+            {
+                    <div class="alert alert-success alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        @TempData["Success"]
+                        &nbsp; &nbsp;@Html.ActionLink("QUAY VỀ", "Index", "MuonSach",
+                                        new { @class = "btn btn-primary" })
+                    </div>
+                                 
+                <br/>
+
+            }
+            
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        @TempData["Error"]
+                       
+                    </div>
+
+                    <br />
+
+                }
+
+            </div>
             <div class="row" id="row_tim_doc_gia">
                 <form>
                     <div class="col-md-7" style=" padding-left: 0px;">
-
+                       
                         <div class="form-group">
                             <label for="tim_doc_gia">TÌM ĐỘC GIẢ</label>
                             <input type="text" class="form-control" id="tim_doc_gia" name="tim_doc_gia" value="@ViewBag.tim_doc_gia">

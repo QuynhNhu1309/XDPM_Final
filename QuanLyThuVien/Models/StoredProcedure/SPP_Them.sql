@@ -391,6 +391,8 @@ SET NOCOUNT ON;
 	declare @idpnct int;
 	declare @ma_pnct varchar(100);
 	declare @id_dau_sach int;
+	declare @id_cs int;
+	declare @ma_cuon_sach varchar(100);
 	
 	if(not exists(select * from phieu_nhap))
 		begin
@@ -465,8 +467,47 @@ INSERT INTO phieu_nhap(ma_phieu_nhap, ngay_nhap, tongtien, id_tinh_trang, id_nha
  INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, 
  so_luong_nhap, thanh_tien, id_phieu_nhap)
  VALUES(@ma_pnct, @id_nha_xuat_ban, @id_dau_sach, @gia_nhap, @so_luong_nhap, @thanhtien, @id_phieu_nhap)
+ 
+ WHILE(@so_luong_nhap > 0)
+ BEGIN
 
-EXEC Them_PhieuNhap 2100000, 1, 10000, 21
+	if(not exists(select * from cuon_sach))
+		begin
+		set @id_cs = 1;
+		set @ma_cuon_sach = 'CS00' + CAST(@id_cs as varchar(100));
+		select @ma_cuon_sach as ma_pm1;
+		end
+	else
+		begin
+		set @ma_cuon_sach = (select MAX(ma_cuon_sach) from cuon_sach)
+		set @id_cs = cast(SUBSTRING(@ma_cuon_sach, 3 ,4) as int)
+		set @id_cs = @id_cs + 1;
+		
+			if(@id_cs < 10)
+				begin 
+				set @ma_cuon_sach = 'CS00' + CAST(@id_cs as varchar(100))
+				select @ma_cuon_sach as ma_pm2;
+				end
+			else if(@id_cs < 100 and @id_cs >=  10)
+				begin 
+				set @ma_cuon_sach = 'CS0' + CAST(@id_cs as varchar(100));
+				select @ma_cuon_sach as ma_pm3;
+				end
+
+			else if(@id_cs < 1000 and @id_cs >=  100)
+				begin 
+				set @ma_cuon_sach = 'CS' + CAST(@id_cs as varchar(100));
+				select @ma_cuon_sach as ma_pm4;
+				end
+	end
+
+	INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach,id_tinh_trang) VALUES(@ma_cuon_sach, @id_dau_sach, 9)
+	SET @so_luong_nhap = @so_luong_nhap - 1;
+
+ END
+
+
+EXEC Them_PhieuNhap 20000, 1, 10000, 2
 
 
 
@@ -488,6 +529,8 @@ SET NOCOUNT ON;
 	declare @idpnct int;
 	declare @ma_pnct varchar(100);
 	declare @id_dau_sach int;
+	declare @id_cs int;
+	declare @ma_cuon_sach varchar(100);
 	
 
 --- Tạo mã mới cho phiếu nhập chi tiết
@@ -531,4 +574,192 @@ SET NOCOUNT ON;
  so_luong_nhap, thanh_tien, id_phieu_nhap)
  VALUES(@ma_pnct, @id_nha_xuat_ban, @id_dau_sach, @gia_nhap, @so_luong_nhap, @thanhtien, @id_phieu_nhap)
 
-EXEC Them_PhieuNhap_Exist 2100000, 1, 10000, 21
+ WHILE(@so_luong_nhap > 0)
+ BEGIN
+
+	if(not exists(select * from cuon_sach))
+		begin
+		set @id_cs = 1;
+		set @ma_cuon_sach = 'CS00' + CAST(@id_cs as varchar(100));
+		select @ma_cuon_sach as ma_pm1;
+		end
+	else
+		begin
+		set @ma_cuon_sach = (select MAX(ma_cuon_sach) from cuon_sach)
+		set @id_cs = cast(SUBSTRING(@ma_cuon_sach, 3 ,4) as int)
+		set @id_cs = @id_cs + 1;
+		
+			if(@id_cs < 10)
+				begin 
+				set @ma_cuon_sach = 'CS00' + CAST(@id_cs as varchar(100))
+				select @ma_cuon_sach as ma_pm2;
+				end
+			else if(@id_cs < 100 and @id_cs >=  10)
+				begin 
+				set @ma_cuon_sach = 'CS0' + CAST(@id_cs as varchar(100));
+				select @ma_cuon_sach as ma_pm3;
+				end
+
+			else if(@id_cs < 1000 and @id_cs >=  100)
+				begin 
+				set @ma_cuon_sach = 'CS' + CAST(@id_cs as varchar(100));
+				select @ma_cuon_sach as ma_pm4;
+				end
+	end
+
+	INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach,id_tinh_trang) VALUES(@ma_cuon_sach, @id_dau_sach, 9)
+	SET @so_luong_nhap = @so_luong_nhap - 1;
+
+ END
+
+
+EXEC Them_PhieuNhap_Exist 100000, 1, 10000, 10
+
+
+---- THÊM PHIẾU TRẢ MỚI,
+
+---UPDATE TÌNH TRẠNG PHIẾU MƯỢN VÀ PHIẾU MƯỢN CHI TIẾT, SỐ LƯỢNG CUỐN SÁCH CỦA DẦU SÁCH --
+
+IF OBJECT_ID('Tra_Sach') IS NOT NULL
+DROP PROCEDURE Tra_Sach;
+GO
+CREATE PROC Tra_Sach
+	@id_pmct int
+AS
+SET NOCOUNT ON;
+SET NOCOUNT ON;
+	declare @idpt int;
+	declare @ma_phieu_tra varchar(100);
+	declare @id_phieu_muon int;
+	declare @id_dau_sach int;
+	declare @so_luong int;
+	declare @idpt_ct int;
+	declare @ma_phieu_tra_ct varchar(100);
+	declare @idpm_trong_phieu_tra int;
+	declare @so_luong_cuon_sach int;
+	DECLARE @count_cuon_sach int;
+	declare @dem_pmct_da_tra int;
+	declare @dem_pmct_chua_tra int;
+	
+	
+SET @id_phieu_muon = (SELECT id_phieu_muon FROM phieu_muon_chi_tiet WHERE id = @id_pmct)
+SET @idpm_trong_phieu_tra = (SELECT TOP(1)id_phieu_muon FROM phieu_tra ORDER BY id DESC)
+SET @id_dau_sach =(SELECT id_dau_sach FROM phieu_muon_chi_tiet WHERE id = @id_pmct);
+SET @so_luong =(SELECT so_luong FROM phieu_muon_chi_tiet WHERE id = @id_pmct);
+SET @so_luong_cuon_sach = (SELECT so_luong_cuon_sach FROM dau_sach WHERE id = @id_dau_sach);
+--SELECT @id_phieu_muon AS id_phieu_muon;
+--SELECT @idpm_trong_phieu_tra AS idpm_trong_phieu_tra;
+
+-- Tạo mã cho phiếu trả chi tiết
+if(not exists(select * from phieu_tra_chi_tiet))
+		begin
+		set @idpt_ct = 1;
+		set @ma_phieu_tra_ct = 'PTCT00' + CAST(@idpt_ct as varchar(100));
+		select @ma_phieu_tra_ct as ma_pm1;
+		end
+	else
+		begin
+		set @ma_phieu_tra_ct = (select MAX(ma_phieu_tra_chi_tiet) from phieu_tra_chi_tiet)
+		set @idpt_ct = cast(SUBSTRING(@ma_phieu_tra_ct, 5 ,4) as int)
+		set @idpt_ct = @idpt_ct + 1;
+		
+			if(@idpt_ct < 10)
+				begin 
+				set @ma_phieu_tra_ct = 'PTCT00' + CAST(@idpt_ct as varchar(100))
+				select @ma_phieu_tra_ct as ma_pm2;
+				end
+			else if(@idpt_ct < 100 and @idpt_ct >=  10)
+				begin 
+				set @ma_phieu_tra_ct = 'PTCT0' + CAST(@idpt_ct as varchar(100));
+				select @ma_phieu_tra_ct as ma_pm3;
+				end
+
+			else if(@idpt_ct < 1000 and @idpt_ct >=  100)
+				begin 
+				set @ma_phieu_tra_ct = 'PTCT' + CAST(@idpt_ct as varchar(100));
+				select @ma_phieu_tra_ct as ma_pm4;
+				end
+	end
+	
+
+IF(@id_phieu_muon != @idpm_trong_phieu_tra)
+BEGIN
+--- Tạo mã mới cho phiếu nhập chi tiết
+ if(not exists(select * from phieu_tra))
+		begin
+		set @idpt = 1;
+		set @ma_phieu_tra = 'PT00' + CAST(@idpt as varchar(100));
+		select @ma_phieu_tra as ma_pm1;
+		end
+	else
+		begin
+		set @ma_phieu_tra = (select MAX(ma_phieu_tra) from phieu_tra)
+		set @idpt = cast(SUBSTRING(@ma_phieu_tra, 5 ,4) as int)
+		set @idpt = @idpt + 1;
+		
+			if(@idpt < 10)
+				begin 
+				set @ma_phieu_tra = 'PT00' + CAST(@idpt as varchar(100))
+				select @ma_phieu_tra as ma_pm2;
+				end
+			else if(@idpt < 100 and @idpt >=  10)
+				begin 
+				set @ma_phieu_tra = 'PT0' + CAST(@idpt as varchar(100));
+				select @ma_phieu_tra as ma_pm3;
+				end
+
+			else if(@idpt < 1000 and @idpt >=  100)
+				begin 
+				set @ma_phieu_tra = 'PT' + CAST(@idpt as varchar(100));
+				select @ma_phieu_tra as ma_pm4;
+				end
+	end
+	INSERT INTO phieu_tra(ma_phieu_tra, id_phieu_muon, id_nv, ngay_tra)
+VALUES(@ma_phieu_tra, @id_phieu_muon, 1, getdate());
+
+END
+
+SET @idpt = (SELECT TOP(1)id FROM phieu_tra ORDER BY id DESC)
+INSERT INTO phieu_tra_chi_tiet(ma_phieu_tra_chi_tiet, id_phieu_tra, id_dau_sach, so_luong, so_ngay_qua_han, 
+id_tinh_trang, tien_phat)
+VALUES(@ma_phieu_tra_ct, @idpt, @id_dau_sach, @so_luong, 0, 14, 0);
+
+UPDATE dau_sach SET so_luong_cuon_sach = @so_luong_cuon_sach + @so_luong WHERE id = @id_dau_sach;
+UPDATE phieu_muon_chi_tiet SET id_tinh_trang = 16 WHERE id = @id_pmct;
+
+WHILE(@so_luong > 0)
+BEGIN
+UPDATE TOP(1) cuon_sach SET id_tinh_trang = 9 WHERE id_tinh_trang = 10 AND id_dau_sach = @id_dau_sach
+SET @so_luong = @so_luong - 1;
+END
+
+SET @dem_pmct_da_tra = (SELECT COUNT(*) FROM phieu_muon_chi_tiet WHERE id_phieu_muon = @id_phieu_muon and id_tinh_trang = 16)
+SET @dem_pmct_chua_tra = (SELECT COUNT(*) FROM phieu_muon_chi_tiet WHERE id_phieu_muon = @id_phieu_muon)
+IF(@dem_pmct_da_tra = @dem_pmct_chua_tra)
+BEGIN
+UPDATE phieu_muon SET id_tinh_trang = 12 WHERE id = @id_phieu_muon
+END
+ 
+
+
+
+
+
+EXEC Tra_Sach 90
+
+		--- Thêm thông tin cho phiếu trả
+
+
+
+
+
+
+ SET @id_phieu_nhap = (SELECT TOP(1) id FROM phieu_nhap ORDER BY id DESC)
+ SET @tong_tien = (SELECT tongtien FROM phieu_nhap WHERE id = @id_phieu_nhap);
+ UPDATE phieu_nhap SET tongtien = @tong_tien + @thanhtien WHERE id = @id_phieu_nhap;
+ -- Lấy id đầu sách mới được thêm
+  SET @id_dau_sach = (SELECT TOP(1) id FROM dau_sach ORDER BY id DESC)
+
+ INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, 
+ so_luong_nhap, thanh_tien, id_phieu_nhap)
+ VALUES(@ma_pnct, @id_nha_xuat_ban, @id_dau_sach, @gia_nhap, @so_luong_nhap, @thanhtien, @id_phieu_nhap)

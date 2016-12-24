@@ -11,6 +11,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.ComponentModel;
 using System.Collections;
+using System.Web.Routing;
 
 
 
@@ -133,6 +134,7 @@ namespace WebForm.Controllers
                 //}
                 Session.Remove("s_tim_doc_gia");
                 Session["s_tim_doc_gia"] = tim_doc_gia;
+                ViewBag.tim_doc_gia = Session["s_tim_doc_gia"];
 
             }
             else
@@ -143,6 +145,7 @@ namespace WebForm.Controllers
                 if (!String.IsNullOrEmpty((string)(Session["s_tim_doc_gia"])))
                 {
                     tim_doc_gia = (string)(Session["s_tim_doc_gia"]);
+                    ViewBag.tim_doc_gia = Session["s_tim_doc_gia"];
                     doc_gia = doc_gia.Where(s => s.ma_the_thu_vien.Contains(tim_doc_gia));
                 }
             }
@@ -165,7 +168,7 @@ namespace WebForm.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public JsonResult Create(string []list)
+        public ActionResult Create(string []list)
         {
             //if (ModelState.IsValid)
             //{
@@ -200,85 +203,129 @@ namespace WebForm.Controllers
             int tongsoluongmuon = 0;
             int j = 0;
             int tmp = 0;
-            while (j <= list.Length)
+            int flag = 0;
+            for (int i = 0; i < list.Length; i++ )
             {
-                if (j == 2)
+                
+                if(list[i] != "")
                 {
-                    tongsoluongmuon += Convert.ToInt32(list[j]);
-                    tmp = j;
-                }
-                if (j % 2 == 0 && j - tmp == 4 && list.Length - j > 3)
-                {
-                    tongsoluongmuon += Convert.ToInt32(list[j]);
-                    tmp = j;
-                }
-
-                if (list.Length - j == 1)
-                {
-                    ma_doc_gia = list[j];
-                }
-
-                if (list.Length - j == 3)
-                {
-                    ngaymuon = Convert.ToDateTime(list[j]);
-                    //ngaymuon = DateTime.ParseExact(list[j], "dd/MM/yyyy", null);
-                }
-
-                if (list.Length - j == 2)
-                {
-                    ngaytra = Convert.ToDateTime(list[j]);
-                    //ngaytra = DateTime.ParseExact(list[j], "dd/MM/yyyy", null);
-                }
-                j = j + 1;
-
-
-            }
-            List<int> list_muon1 = new List<int>();
-            list_muon1.Add(tongsoluongmuon);
-
-
-            var pm = new phieu_muon();
-            //int res = pm.Them_PhieuMuon("PM010", ngay_muon, 1, so_luong, 1, 10, ngay_tra);
-            int res = pm.Them_PhieuMuon(ngaymuon, ma_doc_gia, tongsoluongmuon,ngaytra);
-
-            
-            
-
-            int id_dau_sach = 0;
-            int soluongmuon = 0;
-            for (int i = 1; i < list.Length - 3; i++)
-            {
-
-                if (i % 4 == 2)
-                {
-                    soluongmuon = Convert.ToInt32(list[i]);
-                }
-                if (i % 4 == 3)
-                {
-                    id_dau_sach = Convert.ToInt32(list[i]);
-                }
-                if (soluongmuon != 0 && id_dau_sach != 0)
-                {
-                    int res_pmct = pm.Them_PhieuMuon_ChiTiet(soluongmuon, id_dau_sach);
-                    soluongmuon = 0;
-                    id_dau_sach = 0;
+                    flag = flag + 1;
                 }
                 
             }
-            //int[] list_muon = new int[10];
-            List<int> list_muon = new List<int>();
+            //return Json(flag, JsonRequestBehavior.AllowGet);
 
-            list_muon.Add(id_dau_sach);
-            list_muon.Add(soluongmuon);
+            if (flag == list.Length)
+            {
+                while (j <= list.Length)
+                {
+
+                    if (j == 2)
+                    {
+
+                        tongsoluongmuon += Convert.ToInt32(list[j]);
+                        tmp = j;
+
+                    }
+                    if (j % 2 == 0 && j - tmp == 4 && list.Length - j > 3)
+                    {
+                        tongsoluongmuon += Convert.ToInt32(list[j]);
+                        tmp = j;
+                    }
+
+                    if (list.Length - j == 1)
+                    {
+                        ma_doc_gia = list[j];
+                    }
+
+                    if (list.Length - j == 3)
+                    {
+                        ngaymuon = Convert.ToDateTime(list[j]);
+                        //ngaymuon = DateTime.ParseExact(list[j], "dd/MM/yyyy", null);
+                    }
+
+                    if (list.Length - j == 2)
+                    {
+                        ngaytra = Convert.ToDateTime(list[j]);
+                        //ngaytra = DateTime.ParseExact(list[j], "dd/MM/yyyy", null);
+                    }
+
+
+                    j = j + 1;
+
+
+                }
+
+                List<int> list_muon1 = new List<int>();
+                list_muon1.Add(tongsoluongmuon);
+                int res = 0;
+                var pm = new phieu_muon();
+                //if(tongsoluongmuon > 0)
+                //{ 
+
+                //int res = pm.Them_PhieuMuon("PM010", ngay_muon, 1, so_luong, 1, 10, ngay_tra);
+                res = pm.Them_PhieuMuon(ngaymuon, ma_doc_gia, tongsoluongmuon, ngaytra);
+                //  }
+
+
+
+
+                int id_dau_sach = 0;
+                int soluongmuon = 0;
+                int res_pmct = 0;
+                for (int i = 1; i < list.Length - 3; i++)
+                {
+
+                    if (i % 4 == 2)
+                    {
+                        soluongmuon = Convert.ToInt32(list[i]);
+                    }
+                    if (i % 4 == 3)
+                    {
+                        id_dau_sach = Convert.ToInt32(list[i]);
+                    }
+                    if (soluongmuon != 0 && id_dau_sach != 0)
+                    {
+                        res_pmct = pm.Them_PhieuMuon_ChiTiet(soluongmuon, id_dau_sach);
+                        soluongmuon = 0;
+                        id_dau_sach = 0;
+                    }
+
+                }
+
+                TempData["Success"] = "Thêm phiếu mượn thành công";
+            }
+
+            else
+            {
+                TempData["Error"] = "Thêm phiếu mượn không thành công";
+            }
+            //int[] list_muon = new int[10];
+            //List<int> list_muon = new List<int>();
+
+            //list_muon.Add(id_dau_sach);
+            //list_muon.Add(soluongmuon);
             //list_muon.push(id_dau_sach);
             //list_muon.push(soluongmuon);
 
                 //return Json(list);
+            return Json(list, JsonRequestBehavior.AllowGet);
+            //return RedirectToAction("Create");
+           // return View();
+            //return (RedirectToAction("Create", "MuonSach", new { tim_doc_gia = "" }));
+            //return RedirectToAction("EveryView", "MuonSach");
+    //        return RedirectToAction("Create", new RouteValueDictionary(
+    //new { controller = "MuonSach", action = "Create", tim_doc_gia = "" }));
             //return Json(list_muon, JsonRequestBehavior.AllowGet);
-            //return RedirectToAction("Create", new { list=list });
-            return Json(list_muon, JsonRequestBehavior.AllowGet);
+            
 
         }
+        public ActionResult EveryView()
+        {
+            return View();
+        }
+
+
 
         public ActionResult Hello()
         {

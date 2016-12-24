@@ -29,18 +29,18 @@ namespace WebForm.Controllers
             //List<object> Mymodel = new List<object>();
             //var doc_gia = from s in db.doc_gia
             //               select s;
-            var phieu_muon = from pm in db.phieu_muon
-                             select pm;
+            var phieu_tra = from pt in db.phieu_tra
+                             select pt;
 
             if (!String.IsNullOrEmpty(tim_doc_gia_index))
             {
-                phieu_muon = phieu_muon.Where(w => w.doc_gia.ma_the_thu_vien.Contains(tim_doc_gia_index));
+                phieu_tra = phieu_tra.Where(w => w.phieu_muon.doc_gia.ma_the_thu_vien.Contains(tim_doc_gia_index));
 
             }
             //Mymodel.Add(doc_gia.ToList());
             //Mymodel.Add(phieu_muon.ToList().ToPagedList(page ?? 1, 3));
             //return View(Mymodel);
-            return View(phieu_muon.ToList().ToPagedList(page ?? 1, 5));
+            return View(phieu_tra.ToList().ToPagedList(page ?? 1, 5));
             //return View();
         }
 
@@ -49,33 +49,84 @@ namespace WebForm.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+
+            var ptct_list = from ptct in db.phieu_tra_chi_tiet
+                            where ptct.id_phieu_tra == id
+                            select ptct;
+
+            //pmct_list = pmct_list.Where(pmct => pmct.id_phieu_muon.Contains(id));
+
+            return View(ptct_list.ToList());
+            //return View();
         }
 
         //
         // GET: /TraSach/Create
 
-        public ActionResult Create()
+        public ActionResult Create(string tim_doc_gia)
         {
-            return View();
+            ViewBag.tim_doc_gia = tim_doc_gia;
+            List<object> Mymodel = new List<object>();
+            var doc_gia = from s in db.doc_gia
+                          select s;
+            var phieu_muon_chi_tiet = (from pmct in db.phieu_muon_chi_tiet select pmct).
+                Where(pmct=>pmct.phieu_muon.doc_gia.ma_the_thu_vien.Contains(tim_doc_gia));
+
+
+            //var phieu_muon = (from pm in db.phieu_muon select pm)
+            //                          .Where(pm => pm.doc_gia.ma_the_thu_vien.Contains(tim_doc_gia));
+            //                              ;
+
+
+            if (!String.IsNullOrEmpty(tim_doc_gia))
+            {
+                doc_gia = doc_gia.Where(s => s.ma_the_thu_vien.Contains(tim_doc_gia));
+                Session.Remove("s_tim_doc_gia");
+                Session["s_tim_doc_gia"] = tim_doc_gia;
+                ViewBag.tim_doc_gia = Session["s_tim_doc_gia"];
+
+            }
+            else
+            {
+                doc_gia = from s in db.doc_gia
+                          select s;
+
+                if (!String.IsNullOrEmpty((string)(Session["s_tim_doc_gia"])))
+                {
+                    tim_doc_gia = (string)(Session["s_tim_doc_gia"]);
+                    ViewBag.tim_doc_gia = Session["s_tim_doc_gia"];
+                    doc_gia = doc_gia.Where(s => s.ma_the_thu_vien.Contains(tim_doc_gia));
+                }
+            }
+            Mymodel.Add(doc_gia.ToList());
+            Mymodel.Add(phieu_muon_chi_tiet.ToList());
+            //Mymodel.Add(list_cuon_sach.ToList());
+            //Mymodel.Add(phieu_muon_chi_tiet.ToList());
+            //return View(Mymodel);
+            return View(Mymodel);
+
         }
 
         //
         // POST: /TraSach/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public JsonResult Create(string[] list)
         {
-            try
-            {
-                // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
+            var pt = new phieu_tra();
+            if (list.Length > 0)
             {
-                return View();
+                for (int i = 0; i < list.Length; i++)
+                {
+
+                    int res = pt.Tra_Sach(Convert.ToInt32(list[i]));
+                }
+                TempData["Success_PhieuTra"] = "Trả sách thành công";
             }
+            
+           
+                return Json(list, JsonRequestBehavior.AllowGet);
         }
 
         //

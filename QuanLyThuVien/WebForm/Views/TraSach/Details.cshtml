@@ -1,0 +1,138 @@
+﻿@model IList<Models.phieu_tra_chi_tiet>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_Library.cshtml";
+
+}
+
+<div id="body">
+    <div class="header">
+        <div>
+            <h1>
+                CHI TIẾT PHIẾU MƯỢN @foreach (var item in Model)
+                {@Html.DisplayFor(modelItem => item.phieu_tra.ma_phieu_tra) break;
+                }
+            </h1>
+        </div>
+    </div>
+    <div class="blog">
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6" style="border:2px solid black;">
+                @foreach (var item in Model)
+                {
+                    <div class="row">
+                        <div class="col-md-5"><h5>MÃ THẺ THƯ VIỆN :</h5></div>
+                        <div class="col-md-7"><h5>@Html.DisplayFor(modelItem => item.phieu_tra.phieu_muon.doc_gia.ma_the_thu_vien)</h5></div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5"><h5>ĐỘC GIẢ :</h5></div>
+                        <div class="col-md-7"><h5>@Html.DisplayFor(modelItem => item.phieu_tra.phieu_muon.doc_gia.ho_ten)</h5></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5"><h5>NGÀY MƯỢN:</h5></div>
+                        <div class="col-md-7"><h5>@Html.DisplayFor(modelItem => item.phieu_tra.phieu_muon.ngay_muon)</h5></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5"><h5>NGÀY TRẢ:</h5></div>
+                        <div class="col-md-7"><h5>@Html.DisplayFor(modelItem => item.phieu_tra.ngay_tra)</h5></div>
+                    </div>
+
+                   
+                    <div class="row">
+                        <div class="col-md-5"><h5>MÃ NHÂN VIÊN:</h5></div>
+                        <div class="col-md-7"><h5>@Html.DisplayFor(modelItem => item.phieu_tra.nhan_vien.ma_nhan_vien)</h5></div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5"><h5>TÊN NHÂN VIÊN:</h5></div>
+                        <div class="col-md-7"><h5>@Html.DisplayFor(modelItem => item.phieu_tra.nhan_vien.ho_ten)</h5></div>
+
+                    </div>
+
+                    break;
+                }
+            </div>
+            <div class="col-md-3"></div>
+
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-md-11">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>MÃ PHIẾU TRẢ CHI TIẾT</th>
+                            <th>TÊN SÁCH </th>
+                            <th>SỐ LƯỢNG</th>
+                            
+
+                        </tr>
+                    </thead>
+
+
+
+                    <tbody>
+                        @{
+
+                            var count = 0;
+
+                            foreach (var item in Model)
+                            {
+
+                                count = count + 1;
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@Html.DisplayFor(modelItem => item.ma_phieu_tra_chi_tiet)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.dau_sach.ten_dau_sach)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.so_luong)</td>
+
+                                  
+
+
+                                </tr>
+                            }
+
+                        }
+
+
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-1"></div>
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+                <center>
+                    @Html.ActionLink("QUAY VỀ", "Index", "TraSach",
+                                        new { @class = "btn btn-primary" })
+            </center>
+        </div>
+
+    </div>
+</div>
+<!--       row    -->
+
+
+
+
+
+</div>
+<div class="footer">
+
+
+
+</div>
+</div>
+
+
+

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace Models
 {
     public class phieu_tra
     {
+        public QuanLyThuVienDB context = new QuanLyThuVienDB();
      
         public phieu_tra(){    }
         public phieu_tra(phieu_tra obj)
@@ -39,5 +41,17 @@ namespace Models
         public virtual phieu_muon phieu_muon { get; set; }
 
         public virtual ICollection<phieu_tra_chi_tiet> phieu_tra_chi_tiet { get; set; }
+
+        public int Tra_Sach(int idpmct)
+        {
+            object[] parameters = 
+                {
+                    new SqlParameter("@id_pmct", idpmct)
+                 
+               
+                  };
+            int res = context.Database.ExecuteSqlCommand("Tra_Sach @id_pmct", parameters);
+            return res;
+        }
     }
 }
