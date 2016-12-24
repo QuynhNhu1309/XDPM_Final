@@ -111,13 +111,13 @@ namespace WinForm
 
                     db.dau_sach.Add(dau_sach);
                     db.SaveChanges();
-                    MessageBox.Show(nxb_them.SelectedValue.ToString());
+                    //MessageBox.Show(nxb_them.SelectedValue.ToString());
 
                     // Thêm thông tin vào phiếu nhập và phiếu nhập chi tiết
 
-                    MessageBox.Show(gia_nhap.ToString());
-                    MessageBox.Show(thanh_tien.ToString());
-                    MessageBox.Show(so_luong.ToString());
+                    //MessageBox.Show(gia_nhap.ToString());
+                    //MessageBox.Show(thanh_tien.ToString());
+                    //MessageBox.Show(so_luong.ToString());
                     object[] parameters = 
                 {
                     new SqlParameter("@thanhtien", thanh_tien),

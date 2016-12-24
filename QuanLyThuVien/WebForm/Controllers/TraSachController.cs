@@ -70,7 +70,7 @@ namespace WebForm.Controllers
             var doc_gia = from s in db.doc_gia
                           select s;
             var phieu_muon_chi_tiet = (from pmct in db.phieu_muon_chi_tiet select pmct).
-                Where(pmct=>pmct.phieu_muon.doc_gia.ma_the_thu_vien.Contains(tim_doc_gia));
+                Where(pmct=>pmct.phieu_muon.doc_gia.ma_the_thu_vien.Contains(tim_doc_gia) && pmct.id_tinh_trang == 15 );
 
 
             //var phieu_muon = (from pm in db.phieu_muon select pm)

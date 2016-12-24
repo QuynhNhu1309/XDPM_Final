@@ -33,7 +33,9 @@ GO
 	SELECT * FROM doc_gia WHERE ma_the_thu_vien = @ma_the_thu_vien;
  END
 
-  EXEC Data_DG_ID_Dua_Vao_MaTV 'TV001'
+  EXEC Data_DG_ID_Dua_Vao_MaTV 'TV002'
+
+
 
 
   ------ LẤY VÀ TẠO RA MÃ ĐỘC GIẢ VÀ MÃ THẺ THƯ VIỆN VỪA TẠO  ----

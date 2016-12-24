@@ -156,6 +156,19 @@ namespace Models
              
          }
 
+        public int Get_ID_Base_On_MaThe(string ma_the)
+        {
+          
+            int rs = context.Database.SqlQuery<int>(
+                    "Data_DG_ID_Dua_Vao_MaTV @ma_the_thu_vien",
+                    new SqlParameter("ma_the_thu_vien", ma_the)).Single();
+            return rs;
+
+
+
+        }
+
+
         
     }
 }

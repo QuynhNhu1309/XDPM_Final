@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using WebForm.Models;
+
 namespace WebForm.Controllers
 {
     public class ThongKeController : Controller
@@ -16,49 +18,11 @@ namespace WebForm.Controllers
         // GET: /ThongKe/
         public QuanLyThuVienDB _db = new QuanLyThuVienDB();
 
-        public ActionResult Index()
+        public ActionResult Index(string ma_the)
         {
-            string id_doc_gia = "TV001";
-            //var salesPeople = await context.Database.SqlQuery<doc_gia>(
-            //        "Data_PM_ID_Latest @id_doc_gia",
-            //        new SqlParameter("id_doc_gia", id_doc_gia)).ToListAsync();
-            //var countryList = context.Database.SqlQuery<phieu_muon_chi_tiet>("Data_DG_ID_Dua_Vao_MaTV @ma_the_thu_vien", new SqlParameter("@ma_the_thu_vien", id_doc_gia)).ToList();
 
-            var datefrom = "2016-11-11 00:00:00.000";
-            var dateto = "2016-11-22 00:00:00.000";
-            int id = 1;
 
-            var Arr_datefrom = datefrom.ToString().Split('-');
-            var Arr_dateto = dateto.ToString().Split('-');
-
-            //DateTime date1 = new DateTime(Convert.ToInt32(Arr_datefrom[0]), Convert.ToInt32(Arr_datefrom[1]), Convert.ToInt32(Arr_datefrom[2])); /*new DateTime(form["FromDate"]);*/
-            //DateTime date2 = new DateTime(Convert.ToInt32(Arr_dateto[0]), Convert.ToInt32(Arr_dateto[1]), Convert.ToInt32(Arr_dateto[2])); /*form["ToDate"];*/
-
-            DateTime date1 = new DateTime(2016, 10, 20);
-            DateTime date2 = new DateTime(2016, 12, 27);
-
-            var list = _db.phieu_muon.Join(_db.phieu_muon_chi_tiet, pm => pm.id, ctm => ctm.id_phieu_muon, (pm, ctm) => new
-            {
-                phieu_muon = pm,
-                chi_tiet_phieu_muon = ctm
-            }).Join(_db.dau_sach, ctm => ctm.chi_tiet_phieu_muon.id_dau_sach, cs => cs.id, (ctm, cs) => new
-            {
-                chi_tiet_phieu_muon = ctm,
-                dau_sach = cs
-            }).Where(i => i.chi_tiet_phieu_muon.phieu_muon.id_doc_gia == id &&
-            i.chi_tiet_phieu_muon.phieu_muon.ngay_muon >= date1 &&
-            i.chi_tiet_phieu_muon.phieu_muon.ngay_muon <= date2).Select(i => new
-            {
-                ngay_muon = i.chi_tiet_phieu_muon.phieu_muon.ngay_muon,
-                id_phieu_muon = i.chi_tiet_phieu_muon.phieu_muon.id,
-                id_dau_sach = i.dau_sach.id,
-                //MaVachCuonSach = i.CuonSach.MaVach,
-                //DauSachID = i.CuonSach.DauSach.ID,
-                ten_dau_sach = i.dau_sach.ten_dau_sach,
-            }).ToList();
-
-            ViewBag.List = list;
-            return View(list);
+            return View();
         }
 
         //
@@ -81,18 +45,58 @@ namespace WebForm.Controllers
         // POST: /ThongKe/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public JsonResult GetData_ThongKe(string mathe, string tungay, string denngay)
         {
-            try
+            if (mathe != null && tungay != null && denngay != null)
             {
-                // TODO: Add insert logic here
+                //var datefrom = Convert.ToDateTime(list_obj[0]);
+                //var dateto = Convert.ToDateTime(list_obj[1]);
 
-                return RedirectToAction("Index");
+                
+
+                //var Arr_datefrom = datefrom.ToString().Split('-');
+                //var Arr_dateto = dateto.ToString().Split('-');
+                var Arr_datefrom = tungay.Split('-');
+                var Arr_dateto = denngay.Split('-');
+
+
+                DateTime date1 = new DateTime(Convert.ToInt32(Arr_datefrom[0]), Convert.ToInt32(Arr_datefrom[1]), Convert.ToInt32(Arr_datefrom[2])); /*new datetime(form["fromdate"]);*/
+                DateTime date2 = new DateTime(Convert.ToInt32(Arr_dateto[0]), Convert.ToInt32(Arr_dateto[1]), Convert.ToInt32(Arr_dateto[2])); /*form["todate"];*/
+
+
+                //DateTime date1 = new DateTime(2016, 10, 20);
+                //DateTime date2 = new DateTime(2016, 12, 27);
+
+                var list = _db.phieu_muon.Join(_db.phieu_muon_chi_tiet, pm => pm.id, ctm => ctm.id_phieu_muon, (pm, ctm) => new
+                {
+                    phieu_muon = pm,
+                    phieu_muon_chi_tiet = ctm
+                }).Join(_db.dau_sach, ctm => ctm.phieu_muon_chi_tiet.id_dau_sach, cs => cs.id, (ctm, cs) => new
+                {
+                    phieu_muon_chi_tiet = ctm,
+                    dau_sach = cs
+                }).Where(i => i.phieu_muon_chi_tiet.phieu_muon.doc_gia.ma_doc_gia == mathe &&
+                i.phieu_muon_chi_tiet.phieu_muon.ngay_muon >= date1 &&
+                i.phieu_muon_chi_tiet.phieu_muon.ngay_muon <= date2).Select(i => new
+                {
+                    ngay_muon = i.phieu_muon_chi_tiet.phieu_muon.ngay_muon,
+                    id_phieu_muon = i.phieu_muon_chi_tiet.phieu_muon.id,
+                    id_dau_sach = i.dau_sach.id,
+                    so_luong = i.phieu_muon_chi_tiet.phieu_muon_chi_tiet.so_luong,
+                    //MaVachCuonSach = i.CuonSach.MaVach,
+                    //DauSachID = i.CuonSach.DauSach.ID,
+                    ten_dau_sach = i.dau_sach.ten_dau_sach,
+                }).ToList();
+
+                return Json(list);
             }
-            catch
+            else
             {
-                return View();
+                return Json("ok");
             }
+            //return id;
+
+
         }
 
         //
