@@ -54,14 +54,13 @@ INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, s
 INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS002',N'Toán 10',2,N'Sách Toán lớp 10',1,50,1990,1,2);
 INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS003',N'Văn 10',1,N'Sách Văn 10',1,20,1990,1,2);
 INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS004',N'Lý 11',3,N'Sách Lý 11',1,20,1990,1,2);
---INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS005',N'Lý 10',3,N'Sách Lý 10',1,20,1990,1,2);
---INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS006',N'Anh Văn 8',5,N'Sách Ngoại Ngữ 8',1,50,1990,2,2);
---INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS007',N'Hóa 12',4,N'Hóa 12',2,40,1990,2,2);
---INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS008',N'Sinh học 12',7,N'Sinh học 12',2,20,1990,2,2);
---INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS009',N'Sinh học 11',7,N'Sinh học 11',2,50,1990,1,2);
---INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS010',N'Kinh Doanh làm giàu',10,N'Kinh Doanh làm giàu',2,20,1990,1,2);
---INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS011',N'Khoa học tiềm thức',6,N'Khoa học tiềm thức',2,20,1990,1,2);
-
+INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS005',N'Lý 10',3,N'Sách Lý 10',1,20,1990,1,2);
+INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS006',N'Anh Văn 8',5,N'Sách Ngoại Ngữ 8',1,10,1990,2,2);
+INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS007',N'Hóa 12',4,N'Hóa 12',2,10,1990,2,2);
+INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS008',N'Sinh học 12',7,N'Sinh học 12',2,10,1990,2,2);
+INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS009',N'Sinh học 11',7,N'Sinh học 11',2,10,1990,1,2);
+INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS010',N'Kinh Doanh làm giàu',10,N'Kinh Doanh làm giàu',2,10,1990,1,2);
+INSERT INTO dau_sach(ma_dau_sach, ten_dau_sach, id_loai_sach, tom_tat, id_nxb, so_luong_cuon_sach, nam_xuat_ban, id_tac_gia, id_tinh_trang) VALUES('DS011',N'Khoa học tiềm thức',6,N'Khoa học tiềm thức',2,10,1990,1,2);
 
 -- BẢNG CUỐN SÁCH ---
 
@@ -175,6 +174,86 @@ INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS107',4
 INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS108',4,9);
 INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS109',4,9);
 INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS110',4,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS111',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS112',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS113',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS114',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS115',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS116',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS117',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS118',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS119',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS120',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS121',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS122',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS123',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS124',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS125',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS126',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS127',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS128',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS129',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS130',5,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS131',6,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS132',6,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS133',6,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS134',6,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS135',6,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS136',6,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS137',6,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS138',6,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS139',6,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS140',6,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS141',7,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS142',7,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS143',7,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS144',7,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS145',7,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS146',7,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS147',7,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS148',7,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS149',7,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS150',7,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS151',8,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS152',8,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS153',8,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS154',8,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS155',8,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS156',8,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS157',8,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS158',8,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS159',8,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS160',8,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS161',9,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS162',9,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS163',9,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS164',9,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS165',9,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS166',9,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS167',9,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS168',9,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS169',9,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS170',9,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS171',10,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS172',10,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS173',10,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS174',10,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS175',10,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS176',10,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS177',10,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS178',10,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS179',10,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS180',10,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS181',11,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS182',11,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS183',11,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS184',11,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS185',11,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS186',11,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS187',11,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS188',11,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS189',11,9);
+INSERT INTO cuon_sach(ma_cuon_sach, id_dau_sach, id_tinh_trang) VALUES('CS190',11,9);
 
 --- BẢNG NHÂN VIÊN ---
 
@@ -187,15 +266,29 @@ INSERT INTO nhan_vien(ma_nhan_vien, ho_ten, dia_chi, dien_thoai, cmnd, chuc_vu, 
 INSERT INTO nhan_vien(ma_nhan_vien, ho_ten, dia_chi, dien_thoai, cmnd, chuc_vu, id_tinh_trang) VALUES('NV007', N'Nguyễn Văn O',N'Address', '989013245','289789345','thu_thu',4);
 
 --- BẢNG PHIẾU NHẬP ---
+INSERT INTO phieu_nhap(ma_phieu_nhap, ngay_nhap, tongtien, id_tinh_trang, id_nhan_vien) VALUES('PN001', 42588,2000000, 1,1);
+INSERT INTO phieu_nhap(ma_phieu_nhap, ngay_nhap, tongtien, id_tinh_trang, id_nhan_vien) VALUES('PN002', 42594,4000000, 1,1);
+INSERT INTO phieu_nhap(ma_phieu_nhap, ngay_nhap, tongtien, id_tinh_trang, id_nhan_vien) VALUES('PN003', 42710,1800000, 1,2);
+INSERT INTO phieu_nhap(ma_phieu_nhap, ngay_nhap, tongtien, id_tinh_trang, id_nhan_vien) VALUES('PN004', 42711,1800000, 1,1);
+INSERT INTO phieu_nhap(ma_phieu_nhap, ngay_nhap, tongtien, id_tinh_trang, id_nhan_vien) VALUES('PN005', 42712,2000000, 1,1);
+INSERT INTO phieu_nhap(ma_phieu_nhap, ngay_nhap, tongtien, id_tinh_trang, id_nhan_vien) VALUES('PN006', 42713,1000000, 1,1);
+INSERT INTO phieu_nhap(ma_phieu_nhap, ngay_nhap, tongtien, id_tinh_trang, id_nhan_vien) VALUES('PN007', 42714,1000000, 1,1);
+INSERT INTO phieu_nhap(ma_phieu_nhap, ngay_nhap, tongtien, id_tinh_trang, id_nhan_vien) VALUES('PN008', 42715,1000000, 1,1);
+INSERT INTO phieu_nhap(ma_phieu_nhap, ngay_nhap, tongtien, id_tinh_trang, id_nhan_vien) VALUES('PN009', 42716,1000000, 1,1);
+INSERT INTO phieu_nhap(ma_phieu_nhap, ngay_nhap, tongtien, id_tinh_trang, id_nhan_vien) VALUES('PN010', 42717,1000000, 1,1);
+INSERT INTO phieu_nhap(ma_phieu_nhap, ngay_nhap, tongtien, id_tinh_trang, id_nhan_vien) VALUES('PN011', 42718,1000000, 1,1);
 
-INSERT INTO phieu_nhap(ma_phieu_nhap, ngay_nhap, tongtien, id_tinh_trang, id_nhan_vien) VALUES('PN00001', 42588,3600000, 1,1);
-INSERT INTO phieu_nhap(ma_phieu_nhap, ngay_nhap, tongtien, id_tinh_trang, id_nhan_vien) VALUES('PN00002', 42594,1800000, 1,1);
-INSERT INTO phieu_nhap(ma_phieu_nhap, ngay_nhap, tongtien, id_tinh_trang, id_nhan_vien) VALUES('PN00003', 42710,1800000, 1,2);
-
-INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT00001',1,1,100000,20,2000000,1);
-INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT00002',1,2,80000,20,1600000,1);
-INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT00003',1,3,90000,20,1800000,2);
-INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT00004',1,4,90000,20,1800000,3);
+INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT001',1,1,100000,20,2000000,1);
+INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT002',1,2,80000,50,4000000,2);
+INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT003',1,3,90000,20,1800000,3);
+INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT004',1,4,90000,20,1800000,4);
+INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT005',1,5,100000,20,2000000,5);
+INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT006',1,6,100000,10,1000000,6);
+INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT007',1,7,100000,10,1000000,7);
+INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT008',1,8,100000,10,1000000,8);
+INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT009',1,9,100000,10,1000000,9);
+INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT010',1,10,100000,10,1000000,10);
+INSERT INTO phieu_nhap_chi_tiet(ma_phieu_nhap_chi_tiet, id_nha_xuat_ban, id_dau_sach, gia_nhap, so_luong_nhap, thanh_tien, id_phieu_nhap) VALUES(N'PNCT011',1,11,100000,10,1000000,11);
 
 --- BẢNG ĐỘC GIẢ ----
 

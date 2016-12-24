@@ -1,0 +1,20 @@
+﻿
+
+@ViewBag.List
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Library.cshtml";
+}
+
+@foreach (var item in ViewBag.List)
+                {
+    <div class="row">
+        <div class="col-md-5"><h5>MÃ THẺ THƯ VIỆN :</h5></div>
+        <div class="col-md-7"><h5>@item.ten_dau_sach</h5></div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-5"><h5>ĐỘC GIẢ :</h5></div>
+        <div class="col-md-7"><h5>@item.ngay_muon</h5></div>
+    </div>
+}

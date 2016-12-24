@@ -30,7 +30,7 @@ GO
 	@ma_the_thu_vien varchar(100)
  AS
  BEGIN
-	SELECT id FROM doc_gia WHERE ma_the_thu_vien = @ma_the_thu_vien;
+	SELECT * FROM doc_gia WHERE ma_the_thu_vien = @ma_the_thu_vien;
  END
 
   EXEC Data_DG_ID_Dua_Vao_MaTV 'TV001'
@@ -174,6 +174,25 @@ GO
  END
 
   EXEC Get_MaDauSach
+
+
+
+  ---- THỐNG KÊ ----
+
+   --- LẤY ID ĐỘC GIẢ DỰA VÀO MÃ ĐỘC GIẢ--- 
+
+IF OBJECT_ID('Data_DG_ID_Dua_Vao_MaTV') IS NOT NULL
+DROP PROCEDURE Data_DG_ID_Dua_Vao_MaTV;
+GO
+ CREATE PROCEDURE Data_DG_ID_Dua_Vao_MaTV
+	@ma_the_thu_vien varchar(100)
+ AS
+ BEGIN
+	SELECT * FROM doc_gia dg, phieu_muon pm, phieu_muon_chi_tiet pmct
+	 WHERE ma_the_thu_vien = @ma_the_thu_vien and dg.id = pm.id_doc_gia and pmct.id_phieu_muon = pm.id;
+ END
+
+ EXEC Data_DG_ID_Dua_Vao_MaTV 'TV004'
 
 
 

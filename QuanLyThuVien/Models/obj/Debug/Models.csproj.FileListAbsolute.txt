@@ -18,8 +18,8 @@ D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\Models\bin\Debug\EntityFramew
 D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\Models\bin\Debug\EntityFramework.SqlServer.dll
 D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\Models\bin\Debug\EntityFramework.xml
 D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\Models\bin\Debug\EntityFramework.SqlServer.xml
-D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\Models\obj\Debug\Models.Migrations.Initial.resources
-D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\Models\obj\Debug\Models.csproj.GenerateResource.Cache
 D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\Models\obj\Debug\Models.dll
 D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\Models\obj\Debug\Models.pdb
+D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\Models\obj\Debug\Models.Migrations.Initial.resources
+D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\Models\obj\Debug\Models.csproj.GenerateResource.Cache
 D:\KienThuc_LapTrinh\XDPM\XDPM_Final\QuanLyThuVien\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache

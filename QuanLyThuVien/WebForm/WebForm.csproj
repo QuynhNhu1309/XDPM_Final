@@ -198,6 +198,7 @@
     <Compile Include="Controllers\GioiThieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MuonSachController.cs" />
+    <Compile Include="Controllers\ThongKeController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Controllers\TraSachController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -380,6 +381,7 @@
     <Content Include="Views\TraSach\Index.cshtml" />
     <Content Include="Views\TraSach\Details.cshtml" />
     <Content Include="Views\TraSach\Create.cshtml" />
+    <Content Include="Views\ThongKe\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

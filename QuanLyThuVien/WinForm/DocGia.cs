@@ -357,6 +357,8 @@ namespace WinForm
         private void btn_docgia_dong_Click(object sender, EventArgs e)
         {
             this.Hide();
+            frm_main frm = new frm_main();
+            frm.Show();
         }
     }
 }

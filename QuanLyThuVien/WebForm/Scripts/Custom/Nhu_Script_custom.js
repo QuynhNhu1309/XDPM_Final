@@ -201,7 +201,7 @@ function reply_click(clicked_id)
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
                 //console.log(JSON.stringify(arr));
-                //console.log(data);
+                console.log(data);
                
                 window.location.href
             = "/TraSach/Create";

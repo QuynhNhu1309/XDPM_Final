@@ -32,6 +32,7 @@
             this.btn_doc_gia = new System.Windows.Forms.Button();
             this.btn_thongke = new System.Windows.Forms.Button();
             this.btn_thoat = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_dau_sach
@@ -43,6 +44,7 @@
             this.btn_dau_sach.TabIndex = 0;
             this.btn_dau_sach.Text = "QUẢN LÝ ĐẦU SÁCH";
             this.btn_dau_sach.UseVisualStyleBackColor = true;
+            this.btn_dau_sach.Click += new System.EventHandler(this.btn_dau_sach_Click);
             // 
             // btn_doc_gia
             // 
@@ -53,6 +55,7 @@
             this.btn_doc_gia.TabIndex = 0;
             this.btn_doc_gia.Text = "QUẢN LÝ ĐỘC GIẢ";
             this.btn_doc_gia.UseVisualStyleBackColor = true;
+            this.btn_doc_gia.Click += new System.EventHandler(this.btn_doc_gia_Click);
             // 
             // btn_thongke
             // 
@@ -67,12 +70,23 @@
             // btn_thoat
             // 
             this.btn_thoat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_thoat.Location = new System.Drawing.Point(146, 269);
+            this.btn_thoat.Location = new System.Drawing.Point(146, 339);
             this.btn_thoat.Name = "btn_thoat";
             this.btn_thoat.Size = new System.Drawing.Size(190, 45);
             this.btn_thoat.TabIndex = 1;
             this.btn_thoat.Text = "THOÁT";
             this.btn_thoat.UseVisualStyleBackColor = true;
+            this.btn_thoat.Click += new System.EventHandler(this.btn_thoat_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(146, 262);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(190, 43);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "PHIẾU NHẬP";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frm_main
             // 
@@ -81,7 +95,8 @@
             this.AutoSize = true;
             this.BackgroundImage = global::WinForm.Properties.Resources.Lilacs_Book_620x349;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(454, 357);
+            this.ClientSize = new System.Drawing.Size(584, 470);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_thoat);
             this.Controls.Add(this.btn_thongke);
             this.Controls.Add(this.btn_doc_gia);
@@ -99,6 +114,7 @@
         private System.Windows.Forms.Button btn_doc_gia;
         private System.Windows.Forms.Button btn_thongke;
         private System.Windows.Forms.Button btn_thoat;
+        private System.Windows.Forms.Button button1;
     }
 }
 

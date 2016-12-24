@@ -682,7 +682,7 @@ if(not exists(select * from phieu_tra_chi_tiet))
 	end
 	
 
-IF(@id_phieu_muon != @idpm_trong_phieu_tra)
+IF(@id_phieu_muon != @idpm_trong_phieu_tra) OR (not exists(select * from phieu_tra))
 BEGIN
 --- Tạo mã mới cho phiếu nhập chi tiết
  if(not exists(select * from phieu_tra))
@@ -745,7 +745,7 @@ END
 
 
 
-EXEC Tra_Sach 90
+EXEC Tra_Sach 4
 
 		--- Thêm thông tin cho phiếu trả
 

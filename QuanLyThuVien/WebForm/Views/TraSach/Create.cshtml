@@ -12,13 +12,13 @@
 <div id="body">
     <div class="header">
         <div>
-            <h1>MƯỢN SÁCH</h1>
+            <h1>TRẢ SÁCH</h1>
         </div>
     </div>
     <div class="blog">
         <div class="featured">
             <div class="row">
-                @if (TempData["Success"] != null)
+                @if (TempData["Success_PhieuTra"] != null)
                 {
                     <div class="alert alert-success alert-dismissable">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -121,7 +121,7 @@
                        foreach (var item in lst_docgia)                                                       { @Html.DisplayFor(modelItem => item.id)}
                     }" />*@
 
-                <input type="text" name="ma_doc_gia" id="id_doc_gia" value="@if(lst_docgia.Count() == 1)
+                <input type="hidden" name="ma_doc_gia" id="id_doc_gia" value="@if(lst_docgia.Count() == 1)
                                                           {
                                                              @ViewBag.tim_doc_gia
                                                           }" />

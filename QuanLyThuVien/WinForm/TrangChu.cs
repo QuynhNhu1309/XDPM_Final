@@ -16,5 +16,31 @@ namespace WinForm
         {
             InitializeComponent();
         }
+
+        private void btn_dau_sach_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            DauSach frm = new DauSach();
+            frm.Show();
+        }
+
+        private void btn_thoat_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            PhieuNhap frm = new PhieuNhap();
+            frm.Show();
+        }
+
+        private void btn_doc_gia_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            DocGia frm = new DocGia();
+            frm.Show();
+        }
     }
 }

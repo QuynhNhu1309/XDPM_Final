@@ -265,6 +265,8 @@ namespace WinForm
         private void btn_xem_Click(object sender, EventArgs e)
         {
             this.Hide();
+            frm_main frm = new frm_main();
+            frm.Show();
         }
 
         private void lbl_ds_phieunhap_Click(object sender, EventArgs e)

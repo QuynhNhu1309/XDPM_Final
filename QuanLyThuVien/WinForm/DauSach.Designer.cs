@@ -100,6 +100,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "5",
+            "10",
             "15"});
             this.comboBox1.Location = new System.Drawing.Point(871, 124);
             this.comboBox1.Name = "comboBox1";
